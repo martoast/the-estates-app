@@ -115,8 +115,8 @@
             
             <div class="reveal overflow-hidden rounded-2xl border border-sand-50/15 bg-sand-50 p-4 sm:p-6">
                 <img
-                    src="<?php echo e(asset('images/mapa.svg')); ?>"
-                    alt="Mapa de ubicación de Real del Mar en la zona costa de Baja California"
+                    src="<?php echo e(asset('images/mapa-estates.png')); ?>"
+                    alt="Mapa de ubicación de The Estates en Real del Mar, zona costa de Baja California"
                     loading="lazy"
                     class="mx-auto h-auto w-full"
                 >
