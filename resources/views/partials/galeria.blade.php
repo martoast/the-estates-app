@@ -2,22 +2,19 @@
 @php
     // Row 1 — interiores (casas + departamentos). Row 2 — exteriores & comunidad.
     $rowCasas = [
-        ['img' => 'rdm-casa-sala.jpg', 'alt' => 'Sala de casa Candé'],
-        ['img' => 'rdm-casa-comedor.jpg', 'alt' => 'Comedor con vista al mar'],
-        ['img' => 'rdm-depto-a-sala.jpg', 'alt' => 'Sala y comedor del Departamento A'],
-        ['img' => 'rdm-casa-recamara.jpg', 'alt' => 'Recámara principal'],
-        ['img' => 'rdm-depto-b-sala.jpg', 'alt' => 'Sala y comedor del Departamento B'],
-        ['img' => 'rdm-casa-barra.jpg', 'alt' => 'Barra y bar de casa Candé'],
-        ['img' => 'rdm-depto-a-terraza.jpg', 'alt' => 'Terraza frente al Pacífico'],
+        ['img' => 'estates-sala-cocina.jpg', 'alt' => 'Sala y comedor hacia la cocina'],
+        ['img' => 'estates-sala-exterior.jpg', 'alt' => 'Sala abierta a la terraza'],
+        ['img' => 'estates-recamara-principal.jpg', 'alt' => 'Recámara principal'],
+        ['img' => 'estates-vista-mar.jpg', 'alt' => 'Jardín y alberca con vista al mar'],
+        ['img' => 'estates-casa-vista-mar.jpg', 'alt' => 'Villa tipo con vista al Pacífico'],
+        ['img' => 'estates-fachada.jpg', 'alt' => 'Fachada de villa al atardecer'],
     ];
     $rowComunidad = [
-        ['img' => 'rdm-casa-fachada.jpg', 'alt' => 'Fachada de casa Candé al atardecer'],
-        ['img' => 'rdm-casa-esquina.jpg', 'alt' => 'Casas Candé en esquina'],
-        ['img' => 'rdm-casas-aerea.jpg', 'alt' => 'Vista aérea de las casas'],
-        ['img' => 'rdm-edificios-golf.jpg', 'alt' => 'Torres sobre el campo de golf'],
-        ['img' => 'rdm-torres-sunset.jpg', 'alt' => 'Torres al atardecer'],
-        ['img' => 'rdm-caseta.jpg', 'alt' => 'Acceso y caseta de seguridad'],
-        ['img' => 'rdm-masterplan.jpg', 'alt' => 'Vista aérea de Real del Mar'],
+        ['img' => 'estates-aerea.jpg', 'alt' => 'Vista aérea de The Estates'],
+        ['img' => 'estates-aerea-conjunto.jpg', 'alt' => 'Vista aérea del conjunto'],
+        ['img' => 'estates-calle.jpg', 'alt' => 'Calle interior de la comunidad'],
+        ['img' => 'estates-caseta-acceso.jpg', 'alt' => 'Acceso y caseta de seguridad'],
+        ['img' => 'estates-fachada-alt.jpg', 'alt' => 'Villa tipo de The Estates'],
     ];
 
     // Flat, ordered list shared by the lightbox slideshow. Each gallery
@@ -53,14 +50,8 @@
             </h2>
             <p class="mt-6 text-lg leading-relaxed text-sand-100/70">
                 <x-t>
-                    <x-slot:es>Real del Mar es un desarrollo integral frente al Pacífico que ofrece un estilo de vida exclusivo en un entorno natural privilegiado. Combina arquitectura contemporánea, planeación urbana de calidad y una comunidad completa con residencias de alto nivel, áreas verdes y servicios educativos, deportivos y de hospitalidad.</x-slot:es>
-                    <x-slot:en>Real del Mar is an integrated development facing the Pacific that offers an exclusive lifestyle in a privileged natural setting. It blends contemporary architecture, thoughtful urban planning, and a complete community with high-end residences, green spaces, and educational, sports, and hospitality services.</x-slot:en>
-                </x-t>
-            </p>
-            <p class="mt-5 text-lg leading-relaxed text-sand-100/70">
-                <x-t>
-                    <x-slot:es>Diseñado para armonizar con el paisaje, brinda seguridad, conectividad y alto valor — tanto para vivir como para invertir.</x-slot:es>
-                    <x-slot:en>Designed to harmonize with the landscape, it offers security, connectivity, and lasting value — to live in and to invest in.</x-slot:en>
+                    <x-slot:es>Piedra, madera y luz natural. Interiores amplios de doble altura que se abren al jardín, y exteriores de terraza, alberca y horizonte. Cada villa de The Estates está pensada para vivir entre el paisaje mediterráneo y el mar.</x-slot:es>
+                    <x-slot:en>Stone, wood, and natural light. Generous double-height interiors that open onto the garden, and outdoor spaces of terrace, pool, and horizon. Every villa at The Estates is designed for life between the Mediterranean landscape and the sea.</x-slot:en>
                 </x-t>
             </p>
         </div>

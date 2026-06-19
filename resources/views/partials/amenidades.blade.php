@@ -29,8 +29,8 @@
                 </h2>
                 <p class="mt-6 text-lg leading-relaxed text-ink-soft">
                     <x-t>
-                        <x-slot:es>Vivir en Candé significa tener acceso a las amenidades exclusivas de Real del Mar — un entorno diseñado para disfrutar, relajarse y mantenerse activo, siempre con el mar como telón de fondo.</x-slot:es>
-                        <x-slot:en>Living in Candé means access to the exclusive amenities of Real del Mar — an environment designed to enjoy, relax, and stay active, always with the sea as a backdrop.</x-slot:en>
+                        <x-slot:es>Vivir en The Estates significa tener acceso a las amenidades exclusivas de Real del Mar — un entorno diseñado para disfrutar, relajarse y mantenerse activo, siempre con el mar como telón de fondo.</x-slot:es>
+                        <x-slot:en>Living at The Estates means access to the exclusive amenities of Real del Mar — an environment designed to enjoy, relax, and stay active, always with the sea as a backdrop.</x-slot:en>
                     </x-t>
                 </p>
             </div>

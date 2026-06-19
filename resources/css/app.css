@@ -70,45 +70,52 @@
 }
 
 /* ------------------------------------------------------------------
-   Real del Mar — design tokens
-   "Arquitectura emocional frente al mar"
-   Palette drawn from the project's real materials: travertino (sand),
-   piedra Galarza (stone grey), teja San Cristóbal (clay), roble (oak),
-   cancelería negra (matte black), and the Pacific itself.
+   The Estates — design tokens
+   "Mediterranean villas above the Pacific"
+   Palette drawn from the architecture: travertine & limestone (sand),
+   terracotta roof tile (terra), Mediterranean olive & cypress (olive),
+   and the deep navy of the brand + the Pacific at dusk (ocean).
+   Display type → Cormorant Garamond (classic high-contrast serif).
 ------------------------------------------------------------------- */
 @theme {
-    --font-display: 'BoardWalk', ui-serif, Georgia, serif;
+    --font-display: 'Cormorant Garamond', ui-serif, Georgia, serif;
     --font-sans: 'Titling Gothic Normal', ui-sans-serif, system-ui, sans-serif;
-    --font-delight: 'Delight', ui-sans-serif, system-ui, sans-serif;
+    --font-delight: 'Cormorant Garamond', ui-serif, Georgia, serif;
 
     /* Sand / travertine — page backgrounds */
-    --color-sand-50: #faf8f4;
-    --color-sand-100: #f4f0e7;
-    --color-sand-200: #e9e1d2;
-    --color-sand-300: #d9cbb2;
-    --color-sand-400: #c3ab85;
+    --color-sand-50: #faf7f1;
+    --color-sand-100: #f3ede2;
+    --color-sand-200: #e8ddcb;
+    --color-sand-300: #d7c6a9;
+    --color-sand-400: #c2a87f;
 
-    /* Pacific ocean — accents, dark bands, footer */
-    --color-ocean-300: #8fb3c2;
-    --color-ocean-400: #5e8fa3;
-    --color-ocean-600: #33647d;
-    --color-ocean-800: #1a3a4d;
-    --color-ocean-900: #0f2533;
-    --color-ocean-950: #0a1a26;
+    /* Deep navy — brand bands, footer, hero overlay, Pacific at dusk */
+    --color-ocean-300: #9bb4cc;
+    --color-ocean-400: #5f82a6;
+    --color-ocean-600: #305175;
+    --color-ocean-800: #1a3050;
+    --color-ocean-900: #11203a;
+    --color-ocean-950: #0a1626;
 
-    /* Teja / terracotta — the single warm accent (CTAs only) */
-    --color-terra-300: #ddab87;
-    --color-terra-400: #cd8257;
-    --color-terra-500: #b9663a;
-    --color-terra-600: #9d5230;
+    /* Teja / terracotta — the warm accent (CTAs, key highlights) */
+    --color-terra-300: #e2b491;
+    --color-terra-400: #d18a5b;
+    --color-terra-500: #bd6739;
+    --color-terra-600: #9e5430;
+
+    /* Olive / cypress — Mediterranean foliage, the secondary accent */
+    --color-olive-300: #b6bd9c;
+    --color-olive-400: #93a06f;
+    --color-olive-500: #74814f;
+    --color-olive-700: #4d5635;
 
     /* Stone & oak — supporting neutrals */
     --color-stone-warm: #a39a8b;
     --color-oak: #9c7a52;
 
     /* Ink — warm charcoal text, never pure black */
-    --color-ink: #232019;
-    --color-ink-soft: #5c564a;
+    --color-ink: #221f18;
+    --color-ink-soft: #574f43;
 
     --tracking-eyebrow: 0.22em;
 }
@@ -180,19 +187,19 @@ body {
     letter-spacing: var(--tracking-eyebrow);
 }
 
-/* Display headline base — BoardWalk (matches cande.mx headings) */
+/* Display headline base — Cormorant Garamond (classic estate serif) */
 .display {
     @apply font-display;
-    line-height: 1.08;
+    line-height: 1.04;
+    letter-spacing: -0.01em;
 }
 
-/* Accent words inside headlines — render in Delight for a refined contrast
-   against BoardWalk (BoardWalk has no true italic, so no fake-oblique). */
+/* Accent words inside headlines — Cormorant italic for an editorial lift. */
 .display em,
 .accent-italic {
-    font-family: var(--font-delight);
-    font-style: normal;
-    font-weight: 300;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
 }
 
 /* Scroll-reveal initial states (driven by reveal.js) */

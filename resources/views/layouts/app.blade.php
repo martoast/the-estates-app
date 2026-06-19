@@ -23,16 +23,21 @@
         setTimeout(function () { document.documentElement.classList.remove('is-loading'); }, 14000);
     </script>
 
+    {{-- Display serif — Cormorant Garamond --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
     @php $siteUrl = rtrim(config('app.url'), '/'); @endphp
-    <title>{{ $title ?? 'Candé by FRISA · Real del Mar — Casas y departamentos frente al Pacífico' }}</title>
-    <meta name="description" content="{{ $description ?? 'Candé by FRISA es una etapa residencial de lujo dentro de Real del Mar: 37 casas y 54 departamentos con vistas al mar, campo de golf y un estilo de vida tipo resort en Baja California.' }}">
+    <title>{{ $title ?? 'The Estates · Real del Mar — Villas mediterráneas frente al Pacífico' }}</title>
+    <meta name="description" content="{{ $description ?? 'The Estates es una comunidad privada de villas mediterráneas dentro de Real del Mar, Tijuana. Casas de 2, 3 y 4 recámaras con vistas al mar, desde 1.16M USD.' }}">
     <link rel="canonical" href="{{ $siteUrl }}/">
 
     {{-- Open Graph (WhatsApp, Facebook, iMessage, LinkedIn) — URLs must be absolute --}}
-    <meta property="og:site_name" content="Candé · Real del Mar">
-    <meta property="og:title" content="Candé by FRISA · Real del Mar — Vive frente al Pacífico">
-    <meta property="og:description" content="Casas y departamentos de lujo con vistas al mar, campo de golf y estilo de vida tipo resort en Real del Mar, Baja California.">
-    <meta property="og:image" content="{{ $siteUrl }}/images/og-cande.jpg">
+    <meta property="og:site_name" content="The Estates · Real del Mar">
+    <meta property="og:title" content="The Estates · Real del Mar — Villas mediterráneas frente al Pacífico">
+    <meta property="og:description" content="Villas privadas de 2, 3 y 4 recámaras con vistas al mar dentro de Real del Mar, Tijuana. Arquitectura mediterránea, desde 1.16M USD.">
+    <meta property="og:image" content="{{ $siteUrl }}/images/og-estates.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/jpeg">
@@ -42,9 +47,9 @@
 
     {{-- Twitter / X card --}}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Candé by FRISA · Real del Mar — Vive frente al Pacífico">
-    <meta name="twitter:description" content="Casas y departamentos de lujo con vistas al mar, campo de golf y estilo de vida tipo resort en Real del Mar, Baja California.">
-    <meta name="twitter:image" content="{{ $siteUrl }}/images/og-cande.jpg">
+    <meta name="twitter:title" content="The Estates · Real del Mar — Villas mediterráneas frente al Pacífico">
+    <meta name="twitter:description" content="Villas privadas de 2, 3 y 4 recámaras con vistas al mar dentro de Real del Mar, Tijuana. Arquitectura mediterránea, desde 1.16M USD.">
+    <meta name="twitter:image" content="{{ $siteUrl }}/images/og-estates.jpg">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -57,7 +62,7 @@
     {{-- ============================== PRELOADER ============================== --}}
     <div id="preloader" class="fixed inset-0 z-[100] flex items-center justify-center bg-ocean-950">
         <div class="preloader-mark flex flex-col items-center">
-            @include('partials.logo', ['class' => 'h-14 w-auto text-sand-50'])
+            @include('partials.logo', ['class' => 'text-2xl sm:text-3xl text-sand-50'])
             <div class="mt-10 h-px w-44 overflow-hidden rounded-full bg-sand-50/15">
                 <div id="preloader-bar" class="h-full w-0 rounded-full bg-terra-400 transition-[width] duration-300 ease-out"></div>
             </div>
@@ -85,9 +90,9 @@
                 href="#"
                 class="group relative z-50 flex items-center gap-3 transition-colors duration-500"
                 :class="navSolid || navOpen ? 'text-ink' : 'text-sand-50'"
-                aria-label="Real del Mar — inicio"
+                aria-label="The Estates — inicio"
             >
-                @include('partials.logo', ['class' => 'h-12 w-auto lg:h-14'])
+                @include('partials.logo', ['class' => 'text-xl lg:text-2xl'])
                 <span
                     class="eyebrow hidden border-l pl-3 text-[0.6rem] sm:inline transition-colors duration-500"
                     :class="navSolid || navOpen ? 'border-ink/15 text-ink-soft' : 'border-sand-50/25 text-sand-200'"
@@ -169,11 +174,11 @@
         <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
             <div class="grid gap-12 md:grid-cols-3">
                 <div class="text-sand-50">
-                    @include('partials.logo', ['class' => 'h-10 w-auto'])
+                    @include('partials.logo', ['class' => 'text-xl'])
                     <p class="mt-6 max-w-xs text-sm leading-relaxed text-sand-200/70">
                         <x-t>
-                            <x-slot:es>Un desarrollo integral frente al Pacífico. Respaldado por Grupo FRISA, diseñado por Cuaik.</x-slot:es>
-                            <x-slot:en>An integrated development facing the Pacific. Backed by Grupo FRISA, designed by Cuaik.</x-slot:en>
+                            <x-slot:es>Una comunidad privada de villas mediterráneas dentro de Real del Mar, Tijuana — frente al Pacífico.</x-slot:es>
+                            <x-slot:en>A private community of Mediterranean villas within Real del Mar, Tijuana — facing the Pacific.</x-slot:en>
                         </x-t>
                     </p>
                 </div>
@@ -181,8 +186,8 @@
                     <p class="eyebrow mb-5 text-[0.6rem] text-ocean-300"><x-t><x-slot:es>El desarrollo</x-slot:es><x-slot:en>The development</x-slot:en></x-t></p>
                     <ul class="space-y-3 text-sm">
                         <li><a href="#esencia" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Esencia</x-slot:es><x-slot:en>Essence</x-slot:en></x-t></a></li>
-                        <li><a href="#residencias" class="transition-colors hover:text-terra-300">Casas Candé</a></li>
-                        <li><a href="#residencias" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Departamentos</x-slot:es><x-slot:en>Apartments</x-slot:en></x-t></a></li>
+                        <li><a href="#residencias" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Residencias</x-slot:es><x-slot:en>Residences</x-slot:en></x-t></a></li>
+                        <li><a href="#disponibilidad" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Disponibilidad</x-slot:es><x-slot:en>Availability</x-slot:en></x-t></a></li>
                         <li><a href="#amenidades" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Amenidades</x-slot:es><x-slot:en>Amenities</x-slot:en></x-t></a></li>
                         <li><a href="#ubicacion" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Ubicación</x-slot:es><x-slot:en>Location</x-slot:en></x-t></a></li>
                     </ul>
@@ -192,15 +197,15 @@
                     <ul class="space-y-3 text-sm">
                         <li><a href="#contacto" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Agendar visita</x-slot:es><x-slot:en>Schedule a visit</x-slot:en></x-t></a></li>
                         <li><a href="https://wa.me/526610000000" target="_blank" rel="noopener" class="transition-colors hover:text-terra-300">WhatsApp</a></li>
-                        <li><a href="https://www.cande.mx/" target="_blank" rel="noopener" class="transition-colors hover:text-terra-300">cande.mx</a></li>
+                        <li><a href="#disponibilidad" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Precios y lotes</x-slot:es><x-slot:en>Pricing & lots</x-slot:en></x-t></a></li>
                     </ul>
                 </div>
             </div>
             <div class="mt-14 border-t border-sand-50/10 pt-8 text-xs leading-relaxed text-sand-200/50">
                 <p>
                     <x-t>
-                        <x-slot:es>© {{ date('Y') }} Real del Mar. Todos los derechos reservados. · Aviso de Privacidad</x-slot:es>
-                        <x-slot:en>© {{ date('Y') }} Real del Mar. All rights reserved. · Privacy Notice</x-slot:en>
+                        <x-slot:es>© {{ date('Y') }} The Estates · Real del Mar. Todos los derechos reservados. · Aviso de Privacidad</x-slot:es>
+                        <x-slot:en>© {{ date('Y') }} The Estates · Real del Mar. All rights reserved. · Privacy Notice</x-slot:en>
                     </x-t>
                 </p>
                 <p class="mt-2">
@@ -216,9 +221,9 @@
     {{-- Floating WhatsApp (message switches with language) --}}
     <a
         :href="$store.lang.current === 'en'
-            ? 'https://wa.me/526610000000?text=Hi%2C%20I%27m%20interested%20in%20Real%20del%20Mar.%20Could%20you%20send%20me%20more%20information%3F'
-            : 'https://wa.me/526610000000?text=Hola%2C%20me%20interesa%20Real%20del%20Mar%2C%20%C2%BFme%20pueden%20enviar%20informaci%C3%B3n%3F'"
-        href="https://wa.me/526610000000?text=Hola%2C%20me%20interesa%20Real%20del%20Mar%2C%20%C2%BFme%20pueden%20enviar%20informaci%C3%B3n%3F"
+            ? 'https://wa.me/526610000000?text=Hi%2C%20I%27m%20interested%20in%20The%20Estates%20at%20Real%20del%20Mar.%20Could%20you%20send%20me%20more%20information%3F'
+            : 'https://wa.me/526610000000?text=Hola%2C%20me%20interesa%20The%20Estates%20en%20Real%20del%20Mar%2C%20%C2%BFme%20pueden%20enviar%20informaci%C3%B3n%3F'"
+        href="https://wa.me/526610000000?text=Hola%2C%20me%20interesa%20The%20Estates%20en%20Real%20del%20Mar%2C%20%C2%BFme%20pueden%20enviar%20informaci%C3%B3n%3F"
         target="_blank" rel="noopener"
         aria-label="WhatsApp"
         class="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg shadow-ink/20 transition-transform duration-300 hover:scale-110"

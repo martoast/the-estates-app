@@ -5,40 +5,39 @@
             {{-- Editorial copy --}}
             <div class="reveal-group lg:col-span-7">
                 <p class="eyebrow text-terra-500"><x-t><x-slot:es>La esencia</x-slot:es><x-slot:en>The essence</x-slot:en></x-t></p>
-                <h2 class="display mt-6 text-4xl font-light text-ink sm:text-5xl lg:text-6xl">
+                <h2 class="display mt-6 text-5xl font-light text-ink sm:text-6xl lg:text-7xl">
                     <x-t>
-                        <x-slot:es>Arquitectura emocional,<br><em>frente al mar</em></x-slot:es>
-                        <x-slot:en>Emotional architecture,<br><em>facing the sea</em></x-slot:en>
+                        <x-slot:es>Vivir entre piedra,<br>olivo <em>y mar</em></x-slot:es>
+                        <x-slot:en>Live among stone,<br>olive <em>and sea</em></x-slot:en>
                     </x-t>
                 </h2>
                 <p class="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft">
                     <x-t>
-                        <x-slot:es>Candé by FRISA es una nueva etapa residencial de lujo dentro de Real del Mar, en Tijuana. Es un desarrollo que combina 37 casas y 54 departamentos diseñados para vivir o invertir en una zona privada, con vistas al mar y acceso a un estilo de vida tipo resort.</x-slot:es>
-                        <x-slot:en>Candé by FRISA is a new luxury residential phase within Real del Mar, in Tijuana. The development combines 37 homes and 54 apartments designed for living or investing in a private enclave with ocean views and access to a resort-style way of life.</x-slot:en>
+                        <x-slot:es>The Estates es una comunidad privada de villas dentro de Real del Mar, en Tijuana. Arquitectura mediterránea de piedra y teja, con jardines, alberca privada y vistas abiertas al Pacífico — espacios pensados para sentirse amplios, luminosos y conectados con el entorno.</x-slot:es>
+                        <x-slot:en>The Estates is a private community of villas within Real del Mar, in Tijuana. Mediterranean architecture of stone and clay tile, with gardens, a private pool, and open views of the Pacific — spaces designed to feel spacious, light-filled, and connected to their surroundings.</x-slot:en>
                     </x-t>
                 </p>
                 <p class="mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
                     <x-t>
-                        <x-slot:es>El proyecto cuenta con residencias modernas, amenidades y una ubicación privilegiada dentro de Real del Mar, donde los residentes pueden disfrutar de espacios como campo de golf, áreas deportivas, restaurantes, casa club y seguridad.</x-slot:es>
-                        <x-slot:en>The project features modern residences, amenities, and a privileged location within Real del Mar, where residents enjoy a golf course, sports areas, restaurants, a clubhouse, and round-the-clock security.</x-slot:en>
+                        <x-slot:es>Tres prototipos de 2, 3 y 4 recámaras sobre amplios lotes, diseñados para vivir o invertir dentro de una comunidad establecida con campo de golf, casa club y seguridad.</x-slot:es>
+                        <x-slot:en>Three prototypes of 2, 3 and 4 bedrooms on generous lots, designed for living or investing within an established community with a golf course, clubhouse, and security.</x-slot:en>
                     </x-t>
                 </p>
             </div>
 
-            {{-- Casas Candé video --}}
+            {{-- Villa render --}}
             <div class="reveal relative lg:col-span-5">
                 <div class="overflow-hidden rounded-2xl bg-ocean-950 shadow-xl shadow-ink/10">
-                    <video
+                    <img
+                        src="{{ asset('images/estates-fachada.jpg') }}"
+                        alt="Fachada de una villa de The Estates al atardecer"
+                        loading="lazy"
                         class="aspect-[4/5] w-full object-cover"
-                        autoplay
-                        loop
-                        muted
-                        playsinline
-                        poster="{{ asset('images/casa-cande-poster.jpg') }}"
                     >
-                        <source src="{{ asset('videos/casa-cande.mp4') }}" type="video/mp4">
-                    </video>
                 </div>
+                <p class="eyebrow mt-4 text-center text-[0.55rem] text-ink-soft/70">
+                    <x-t><x-slot:es>Villa tipo · The Estates</x-slot:es><x-slot:en>Type villa · The Estates</x-slot:en></x-t>
+                </p>
             </div>
         </div>
     </div>

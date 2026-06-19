@@ -79,9 +79,9 @@
                             <select id="interes" x-model="form.interes"
                                 class="w-full rounded-xl border-ink/10 bg-sand-50 px-5 py-4 text-ink focus:border-terra-400 focus:ring-terra-400">
                                 <option value="" x-text="$store.lang.current === 'en' ? 'Select an option' : 'Selecciona una opción'"></option>
-                                <option value="Casas Candé">Casas Candé</option>
-                                <option value="Modelo A" x-text="$store.lang.current === 'en' ? 'Apartments — Model A' : 'Departamentos — Modelo A'"></option>
-                                <option value="Modelo B" x-text="$store.lang.current === 'en' ? 'Apartments — Model B' : 'Departamentos — Modelo B'"></option>
+                                <option value="Prototipo A" x-text="$store.lang.current === 'en' ? 'Prototype A — 2 bedrooms' : 'Prototipo A — 2 recámaras'"></option>
+                                <option value="Prototipo B" x-text="$store.lang.current === 'en' ? 'Prototype B — 3 bedrooms' : 'Prototipo B — 3 recámaras'"></option>
+                                <option value="Prototipo C" x-text="$store.lang.current === 'en' ? 'Prototype C — 4 bedrooms' : 'Prototipo C — 4 recámaras'"></option>
                                 <option value="Broker" x-text="$store.lang.current === 'en' ? 'I am a broker / real estate agent' : 'Soy broker / asesor inmobiliario'"></option>
                             </select>
                         </div>

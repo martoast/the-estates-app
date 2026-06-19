@@ -3,28 +3,47 @@
     {{-- Backdrop --}}
     <div class="absolute inset-0">
         <img
-            src="{{ asset('images/hero-cande.jpg') }}"
-            alt="Casa Candé en Real del Mar"
-            class="h-full w-full object-cover object-bottom lg:object-[center_60%]"
+            src="{{ asset('images/estates-vista-mar.jpg') }}"
+            alt="Villa de The Estates con vista al Pacífico al atardecer"
+            class="kenburns h-full w-full object-cover object-center"
             fetchpriority="high"
         >
-        {{-- Subtle readability gradient — keep the image the star --}}
-        <div class="absolute inset-0 bg-gradient-to-t from-ocean-950/70 via-transparent to-ocean-950/20"></div>
+        {{-- Readability gradient — keep the image the star --}}
+        <div class="absolute inset-0 bg-gradient-to-t from-ocean-950/80 via-ocean-950/10 to-ocean-950/30"></div>
     </div>
 
-    {{-- Copy — one quiet line, let the video do the talking --}}
-    <div class="relative mx-auto w-full max-w-7xl px-6 pb-28 text-center lg:px-10 lg:pb-16 lg:text-left">
+    {{-- Copy --}}
+    <div class="relative mx-auto w-full max-w-7xl px-6 pb-28 text-center lg:px-10 lg:pb-20 lg:text-left">
         <div class="reveal-group is-revealed mx-auto max-w-3xl lg:mx-0">
-            <h1 class="display text-4xl font-light text-sand-50 drop-shadow-[0_2px_24px_rgba(10,26,38,0.55)] sm:text-5xl lg:text-6xl">
+            <p class="eyebrow text-[0.6rem] text-terra-300 sm:text-[0.65rem]">
+                <x-t><x-slot:es>Real del Mar · Tijuana, Baja California</x-slot:es><x-slot:en>Real del Mar · Tijuana, Baja California</x-slot:en></x-t>
+            </p>
+            <h1 class="display mt-5 text-5xl font-light text-sand-50 drop-shadow-[0_2px_24px_rgba(10,22,38,0.6)] sm:text-6xl lg:text-7xl">
                 <x-t>
-                    <x-slot:es>Donde el Pacífico <em>se convierte</em> en hogar</x-slot:es>
-                    <x-slot:en>Where the Pacific <em>becomes</em> home</x-slot:en>
+                    <x-slot:es>Una villa <em>mediterránea</em><br>sobre el Pacífico</x-slot:es>
+                    <x-slot:en>A <em>Mediterranean</em> villa<br>above the Pacific</x-slot:en>
                 </x-t>
             </h1>
+            <p class="mx-auto mt-7 max-w-xl text-base leading-relaxed text-sand-100/85 lg:mx-0 lg:text-lg">
+                <x-t>
+                    <x-slot:es>Una colección privada de villas de 2, 3 y 4 recámaras dentro de Real del Mar, con jardines, alberca y vistas abiertas al mar.</x-slot:es>
+                    <x-slot:en>A private collection of 2, 3 and 4-bedroom villas within Real del Mar — with gardens, pool, and open ocean views.</x-slot:en>
+                </x-t>
+            </p>
+            <div class="mt-9 flex flex-col items-center gap-4 sm:flex-row lg:items-start">
+                <a href="#residencias"
+                   class="eyebrow rounded-full bg-terra-500 px-7 py-3.5 text-[0.65rem] text-sand-50 transition-all duration-300 hover:bg-terra-600">
+                    <x-t><x-slot:es>Ver residencias</x-slot:es><x-slot:en>Explore residences</x-slot:en></x-t>
+                </a>
+                <a href="#contacto"
+                   class="eyebrow rounded-full border border-sand-50/30 px-7 py-3.5 text-[0.65rem] text-sand-50 backdrop-blur-sm transition-all duration-300 hover:border-sand-50/60 hover:bg-sand-50/5">
+                    <x-t><x-slot:es>Agendar visita</x-slot:es><x-slot:en>Schedule a visit</x-slot:en></x-t>
+                </a>
+            </div>
         </div>
     </div>
 
-    {{-- Scroll cue (arrow only) --}}
+    {{-- Scroll cue --}}
     <a href="#esencia"
        class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
        aria-label="Bajar">
