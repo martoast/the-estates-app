@@ -15,10 +15,10 @@ The site currently still renders Candé content — the work below rebrands it t
 - [x] **SEO/meta/OG** — title, description, `og-estates.jpg`, footer, WhatsApp
 
 ## Now — polish & confirm
-- [x] **Interactive site plan** — 22 lots mapped from the dossier PPT, Voronoi parcels, hover/click + status filter (`resources/data/estates-lots.json`)
-- [ ] **Confirm with Ricardo:** (a) which 2 lots are *apartado* (currently 119 & 113 = placeholders); (b) count discrepancy — dossier says 21 disp + 2 apart = 23 but only 22 lots exist (site shows 20/2); (c) real sizes for lots 111, 117, 119 (price-table values look ~10× too small)
-- [ ] Hi-res / vector master plan → sharper backdrop + exact parcel tracing
-- [ ] Per-lot price data: wire the full 2/3/4-bedroom price tables into the lot panel
+- [x] ~~Interactive site plan~~ — attempted (Voronoi, then hand-trace) but the low-res dossier plan (518px raster, no vector) can't be traced accurately. **Reverted to a static master-plan image + stats/pricing panel.** Lot data + tracing scripts preserved (`resources/data/estates-lots.json`) to re-enable IF a vector/CAD lotification plan arrives.
+- [ ] **Ask Ricardo for the vector/CAD/PDF lotification plan** → then the interactive lot picker can be done exactly (like Real del Mar)
+- [ ] **Confirm:** real lot sizes for 111/117/119 (price-table values look ~10× too small); which 2 lots are *apartado*
+- [ ] Per-lot price data: wire the full 2/3/4-bedroom price tables (once interactive plan is viable)
 - [ ] Remove leftover Candé assets (`cande-*`, `rdm-*` in `public/images/`) now mostly unreferenced (amenities `rdm-am-*` still used — those are Real del Mar community amenities)
 - [ ] `APP_NAME` in `.env` (still "Laravel")
 - [ ] Review the Cormorant serif direction with Ricardo — swap if a brand font exists
