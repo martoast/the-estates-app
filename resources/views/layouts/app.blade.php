@@ -76,6 +76,7 @@
             ['es' => 'Disponibilidad', 'en' => 'Availability', 'href' => '#disponibilidad'],
             ['es' => 'Amenidades', 'en' => 'Amenities', 'href' => '#amenidades'],
             ['es' => 'Galería', 'en' => 'Gallery', 'href' => '#galeria'],
+            ['es' => 'Ubicación', 'en' => 'Location', 'href' => '#ubicacion'],
         ];
     @endphp
 
@@ -93,10 +94,6 @@
                 aria-label="The Estates — inicio"
             >
                 @include('partials.logo', ['class' => 'text-xl lg:text-2xl'])
-                <span
-                    class="eyebrow hidden border-l pl-3 text-[0.6rem] sm:inline transition-colors duration-500"
-                    :class="navSolid || navOpen ? 'border-ink/15 text-ink-soft' : 'border-sand-50/25 text-sand-200'"
-                >Baja California</span>
             </a>
 
             {{-- Desktop links --}}
@@ -190,6 +187,7 @@
                         <li><a href="#disponibilidad" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Disponibilidad</x-slot:es><x-slot:en>Availability</x-slot:en></x-t></a></li>
                         <li><a href="#amenidades" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Amenidades</x-slot:es><x-slot:en>Amenities</x-slot:en></x-t></a></li>
                         <li><a href="#galeria" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Galería</x-slot:es><x-slot:en>Gallery</x-slot:en></x-t></a></li>
+                        <li><a href="#ubicacion" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Ubicación</x-slot:es><x-slot:en>Location</x-slot:en></x-t></a></li>
                     </ul>
                 </div>
                 <div>

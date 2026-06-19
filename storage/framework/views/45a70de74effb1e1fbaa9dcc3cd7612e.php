@@ -76,6 +76,7 @@
             ['es' => 'Disponibilidad', 'en' => 'Availability', 'href' => '#disponibilidad'],
             ['es' => 'Amenidades', 'en' => 'Amenities', 'href' => '#amenidades'],
             ['es' => 'Galería', 'en' => 'Gallery', 'href' => '#galeria'],
+            ['es' => 'Ubicación', 'en' => 'Location', 'href' => '#ubicacion'],
         ];
     ?>
 
@@ -93,10 +94,6 @@
                 aria-label="The Estates — inicio"
             >
                 <?php echo $__env->make('partials.logo', ['class' => 'text-xl lg:text-2xl'], array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-                <span
-                    class="eyebrow hidden border-l pl-3 text-[0.6rem] sm:inline transition-colors duration-500"
-                    :class="navSolid || navOpen ? 'border-ink/15 text-ink-soft' : 'border-sand-50/25 text-sand-200'"
-                >Baja California</span>
             </a>
 
             
@@ -308,6 +305,25 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Galería <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Gallery <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
+<?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
+<?php unset($__attributesOriginal618076cb2e02e8026719e8ebca35f227); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal618076cb2e02e8026719e8ebca35f227)): ?>
+<?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
+<?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
+<?php endif; ?></a></li>
+                        <li><a href="#ubicacion" class="transition-colors hover:text-terra-300"><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('t'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Ubicación <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Location <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
 <?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
