@@ -13,6 +13,9 @@ PORT=8099
 SITE_URL="${SITE_URL:-https://casas-the-estates.netlify.app}"
 
 echo "▸ Building front-end assets…"
+# Remove the Vite dev "hot" marker — if present, @vite() emits dev-server
+# (localhost:5173) tags into the export instead of the built assets.
+rm -f public/hot
 npm run build >/dev/null
 
 echo "▸ Rendering the homepage…"
