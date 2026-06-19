@@ -1,0 +1,8 @@
+# The Estates is a Laravel/Blade-rendered site exported to static HTML by
+# build-static.sh and committed to ./dist. Netlify can't render Blade, so it
+# just publishes the prebuilt dist — no build step.
+#
+# To update the live site: run `./build-static.sh` locally, commit ./dist, push.
+[build]
+  publish = "dist"
+  command = "echo 'Publishing prebuilt dist/ (static export committed to the repo).'"

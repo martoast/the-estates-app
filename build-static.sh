@@ -6,7 +6,7 @@
 # ------------------------------------------------------------------
 set -euo pipefail
 cd "$(dirname "$0")"                     # app/
-OUT="../dist"
+OUT="${OUT:-dist}"                       # in-repo, committed + published by Netlify
 PORT=8099
 # Public URL of the deployed site — used for canonical/og:url/og:image,
 # which social scrapers require to be absolute. Override: SITE_URL=... ./build-static.sh
@@ -33,7 +33,7 @@ sed -i '' "s#http://127.0.0.1:$PORT/#/#g; s#http://localhost:$PORT/#/#g; s#http:
 perl -pi -e "s{http:(?:\\\\*/){2}127\\.0\\.0\\.1:$PORT}{}g; s{http:(?:\\\\*/){2}localhost(?::$PORT)?}{}g" "$OUT/index.html"
 
 echo "▸ Copying static assets…"
-for d in site-assets images videos fonts; do cp -R "public/$d" "$OUT/$d"; done
+for d in site-assets images videos fonts; do [ -d "public/$d" ] && cp -R "public/$d" "$OUT/$d"; done
 cp public/favicon.ico public/robots.txt "$OUT/" 2>/dev/null || true
 
 echo "▸ Writing cache headers (no netlify.toml/_redirects — keeps drag-drop clean)…"
