@@ -73,9 +73,9 @@
     <?php
         $navLinks = [
             ['es' => 'Residencias', 'en' => 'Residences', 'href' => '#residencias'],
+            ['es' => 'Disponibilidad', 'en' => 'Availability', 'href' => '#disponibilidad'],
             ['es' => 'Amenidades', 'en' => 'Amenities', 'href' => '#amenidades'],
             ['es' => 'Galería', 'en' => 'Gallery', 'href' => '#galeria'],
-            ['es' => 'Ubicación', 'en' => 'Location', 'href' => '#ubicacion'],
         ];
     ?>
 
@@ -298,7 +298,7 @@
 <?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
 <?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
 <?php endif; ?></a></li>
-                        <li><a href="#ubicacion" class="transition-colors hover:text-terra-300"><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
+                        <li><a href="#galeria" class="transition-colors hover:text-terra-300"><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('t'); ?>
@@ -307,7 +307,7 @@
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Ubicación <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Location <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
+<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Galería <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Gallery <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
 <?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>

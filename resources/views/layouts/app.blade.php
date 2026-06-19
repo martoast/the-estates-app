@@ -73,9 +73,9 @@
     @php
         $navLinks = [
             ['es' => 'Residencias', 'en' => 'Residences', 'href' => '#residencias'],
+            ['es' => 'Disponibilidad', 'en' => 'Availability', 'href' => '#disponibilidad'],
             ['es' => 'Amenidades', 'en' => 'Amenities', 'href' => '#amenidades'],
             ['es' => 'Galería', 'en' => 'Gallery', 'href' => '#galeria'],
-            ['es' => 'Ubicación', 'en' => 'Location', 'href' => '#ubicacion'],
         ];
     @endphp
 
@@ -189,7 +189,7 @@
                         <li><a href="#residencias" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Residencias</x-slot:es><x-slot:en>Residences</x-slot:en></x-t></a></li>
                         <li><a href="#disponibilidad" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Disponibilidad</x-slot:es><x-slot:en>Availability</x-slot:en></x-t></a></li>
                         <li><a href="#amenidades" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Amenidades</x-slot:es><x-slot:en>Amenities</x-slot:en></x-t></a></li>
-                        <li><a href="#ubicacion" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Ubicación</x-slot:es><x-slot:en>Location</x-slot:en></x-t></a></li>
+                        <li><a href="#galeria" class="transition-colors hover:text-terra-300"><x-t><x-slot:es>Galería</x-slot:es><x-slot:en>Gallery</x-slot:en></x-t></a></li>
                     </ul>
                 </div>
                 <div>
