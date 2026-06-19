@@ -1,14 +1,21 @@
 
 <?php
-    // Stage 1 figures from the client dossier (DISPONIBILIDAD CASAS THE ESTATES).
-    $stats = [
-        ['n' => '22', 'es' => 'Lotes · Etapa 1', 'en' => 'Lots · Stage 1', 'tone' => 'sand'],
-        ['n' => '21', 'es' => 'Disponibles',     'en' => 'Available',      'tone' => 'terra'],
-        ['n' => '2',  'es' => 'Apartados',        'en' => 'Reserved',       'tone' => 'olive'],
-    ];
+    $plan = json_decode(file_get_contents(resource_path('data/estates-lots.json')), true) ?: [];
+    $lots = $plan['lots'] ?? [];
+    $viewBox = $plan['viewBox'] ?? '0 0 1036 964';
+    [$vbW, $vbH] = array_slice(array_map('floatval', explode(' ', $viewBox)), 2);
+    $avail = collect($lots)->where('status', 'available')->count();
+    $reserved = collect($lots)->where('status', 'reserved')->count();
+    $sold = collect($lots)->where('status', 'sold')->count();
 ?>
 
-<section id="disponibilidad" class="bg-ocean-950 py-24 lg:py-32">
+<section id="disponibilidad" class="bg-ocean-950 py-24 lg:py-32"
+    x-data="{
+        filter: 'all',
+        active: null,
+        shown(s) { return this.filter === 'all' || this.filter === s; },
+        pick(l) { this.active = l; },
+    }">
     <div class="mx-auto max-w-7xl px-6 lg:px-10">
         
         <div class="reveal-group mx-auto max-w-2xl text-center">
@@ -42,8 +49,8 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-                     <?php $__env->slot('es', null, []); ?> Etapa 1, lista para <em>elegir</em> <?php $__env->endSlot(); ?>
-                     <?php $__env->slot('en', null, []); ?> Stage 1, ready to <em>choose</em> <?php $__env->endSlot(); ?>
+                     <?php $__env->slot('es', null, []); ?> Encuentra tu villa <em>en el plano</em> <?php $__env->endSlot(); ?>
+                     <?php $__env->slot('en', null, []); ?> Find your villa <em>on the plan</em> <?php $__env->endSlot(); ?>
                  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
@@ -66,8 +73,8 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-                     <?php $__env->slot('es', null, []); ?> Veintidós villas sobre amplios lotes en la primera etapa. Cada lote se cotiza por su superficie; te compartimos la lista completa de precios a solicitud. <?php $__env->endSlot(); ?>
-                     <?php $__env->slot('en', null, []); ?> Twenty-two villas on generous lots in the first stage. Each lot is priced by its area; we'll share the full price list on request. <?php $__env->endSlot(); ?>
+                     <?php $__env->slot('es', null, []); ?> Etapa 1 · <?php echo e(count($lots)); ?> villas. Pasa el cursor o toca cada lote para ver su estado. <?php $__env->endSlot(); ?>
+                     <?php $__env->slot('en', null, []); ?> Stage 1 · <?php echo e(count($lots)); ?> villas. Hover or tap any lot to see its status. <?php $__env->endSlot(); ?>
                  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
@@ -81,53 +88,54 @@
             </p>
         </div>
 
-        <div class="mt-14 grid items-center gap-10 lg:grid-cols-5 lg:gap-14">
+        
+        <div class="reveal mt-10 flex flex-wrap items-center justify-center gap-3">
+            <?php
+                $chips = [['k'=>'all','es'=>'Todos','en'=>'All','n'=>count($lots)],
+                          ['k'=>'available','es'=>'Disponibles','en'=>'Available','n'=>$avail]];
+                if ($reserved) $chips[] = ['k'=>'reserved','es'=>'Apartados','en'=>'Reserved','n'=>$reserved];
+                if ($sold) $chips[] = ['k'=>'sold','es'=>'Vendidos','en'=>'Sold','n'=>$sold];
+            ?>
+            <?php $__currentLoopData = $chips; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $chip): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <button @click="filter = '<?php echo e($chip['k']); ?>'"
+                    class="eyebrow flex items-center gap-2 rounded-full border px-5 py-2.5 text-[0.6rem] transition-colors duration-300"
+                    :class="filter === '<?php echo e($chip['k']); ?>' ? 'border-terra-400 bg-terra-400/15 text-sand-50' : 'border-sand-50/15 text-sand-200/70 hover:border-sand-50/40'">
+                    <span class="lang-es"><?php echo e($chip['es']); ?></span><span class="lang-en"><?php echo e($chip['en']); ?></span>
+                    <span class="text-sand-200/50"><?php echo e($chip['n']); ?></span>
+                </button>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
+
+        <div class="mt-12 grid items-center gap-10 lg:grid-cols-5 lg:gap-12">
             
-            <div class="reveal lg:col-span-3">
-                <div class="overflow-hidden rounded-3xl border border-sand-50/12 bg-sand-50/[0.03] p-3 backdrop-blur-sm sm:p-5">
-                    <img src="<?php echo e(asset('images/estates-masterplan.jpg')); ?>"
-                        alt="Plano maestro de The Estates — distribución de lotes de la Etapa 1"
-                        loading="lazy"
-                        class="w-full rounded-2xl bg-sand-50/5 object-contain">
+            <div class="lg:col-span-3">
+                <div class="plan-svg relative mx-auto w-full overflow-hidden rounded-2xl border border-sand-50/10"
+                     style="aspect-ratio: <?php echo e($vbW); ?> / <?php echo e($vbH); ?>;">
+                    <img src="<?php echo e(asset('images/estates-masterplan.jpg')); ?>" alt=""
+                        class="pointer-events-none absolute inset-0 h-full w-full object-cover">
+                    <svg viewBox="<?php echo e($viewBox); ?>" class="absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg">
+                        <?php $__currentLoopData = $lots; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lot): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <path d="<?php echo e($lot['d']); ?>"
+                                class="plan-lot plan-lot--<?php echo e($lot['status']); ?>"
+                                :class="{ 'is-dim': !shown('<?php echo e($lot['status']); ?>') }"
+                                @mouseenter="pick({ n: '<?php echo e($lot['n']); ?>', area: <?php echo e($lot['area'] ? "'".addslashes($lot['area'])."'" : 'null'); ?>, status: '<?php echo e($lot['status']); ?>' })"
+                                @click="pick({ n: '<?php echo e($lot['n']); ?>', area: <?php echo e($lot['area'] ? "'".addslashes($lot['area'])."'" : 'null'); ?>, status: '<?php echo e($lot['status']); ?>' })"
+                            ></path>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php $__currentLoopData = $lots; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lot): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <text x="<?php echo e($lot['cx']); ?>" y="<?php echo e($lot['cy']); ?>" class="plan-label" style="font-size: 15px;"
+                                :class="{ 'is-dim': !shown('<?php echo e($lot['status']); ?>') }"><?php echo e($lot['n']); ?></text>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </svg>
                 </div>
-                <p class="eyebrow mt-4 text-center text-[0.55rem] text-sand-200/40">
-                    <?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('t'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Plano maestro · Etapa 1 <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Master plan · Stage 1 <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
-<?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
-<?php unset($__attributesOriginal618076cb2e02e8026719e8ebca35f227); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal618076cb2e02e8026719e8ebca35f227)): ?>
-<?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
-<?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
-<?php endif; ?>
-                </p>
             </div>
 
             
-            <div class="reveal-group lg:col-span-2">
-                
-                <div class="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-sand-50/15 bg-sand-50/10">
-                    <?php $__currentLoopData = $stats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="bg-ocean-900/60 px-4 py-7 text-center">
-                            <p class="display text-4xl font-light leading-none <?php echo e($s['tone'] === 'terra' ? 'text-terra-300' : ($s['tone'] === 'olive' ? 'text-olive-300' : 'text-sand-50')); ?>"><?php echo e($s['n']); ?></p>
-                            <p class="eyebrow mt-2 text-[0.5rem] text-sand-200/60"><span class="lang-es"><?php echo e($s['es']); ?></span><span class="lang-en"><?php echo e($s['en']); ?></span></p>
-                        </div>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </div>
-
-                
-                <div class="mt-6 rounded-2xl border border-sand-50/15 bg-ocean-900/60 p-8 backdrop-blur-sm lg:p-10">
-                    <p class="eyebrow text-[0.55rem] text-ocean-300"><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
+            <div class="lg:col-span-2">
+                <div class="flex min-h-[20rem] flex-col justify-center rounded-2xl border border-sand-50/15 bg-ocean-900/60 p-8 backdrop-blur-sm lg:min-h-[24rem] lg:p-10">
+                    <template x-if="!active">
+                        <div class="py-2">
+                            <p class="eyebrow text-[0.6rem] text-ocean-300"><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('t'); ?>
@@ -136,7 +144,7 @@
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Precios <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Pricing <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
+<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Etapa 1 · Villas <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Stage 1 · Villas <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
 <?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
@@ -146,8 +154,8 @@
 <?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
 <?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
 <?php endif; ?></p>
-                    <p class="display mt-3 text-4xl font-light text-sand-50">
-                        <span class="text-lg text-sand-200/60"><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
+                            <p class="display mt-3 text-3xl font-light text-sand-50">
+                                <?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('t'); ?>
@@ -156,89 +164,7 @@
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Desde <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> From <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
-<?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
-<?php unset($__attributesOriginal618076cb2e02e8026719e8ebca35f227); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal618076cb2e02e8026719e8ebca35f227)): ?>
-<?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
-<?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
-<?php endif; ?></span>
-                        $1,163,468 <span class="text-xl text-sand-200/60">USD</span>
-                    </p>
-                    <ul class="mt-7 space-y-3 border-t border-sand-50/10 pt-6 text-sm text-sand-100/80">
-                        <li class="flex items-center gap-3"><span class="h-1 w-1 rounded-full bg-terra-300"></span><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('t'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Prototipos de 2, 3 y 4 recámaras <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> 2, 3 and 4-bedroom prototypes <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
-<?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
-<?php unset($__attributesOriginal618076cb2e02e8026719e8ebca35f227); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal618076cb2e02e8026719e8ebca35f227)): ?>
-<?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
-<?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
-<?php endif; ?></li>
-                        <li class="flex items-center gap-3"><span class="h-1 w-1 rounded-full bg-terra-300"></span><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('t'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Lotes de ~1,730 a 3,040 m² <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Lots from ~1,730 to 3,040 m² <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
-<?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
-<?php unset($__attributesOriginal618076cb2e02e8026719e8ebca35f227); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal618076cb2e02e8026719e8ebca35f227)): ?>
-<?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
-<?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
-<?php endif; ?></li>
-                        <li class="flex items-center gap-3"><span class="h-1 w-1 rounded-full bg-terra-300"></span><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('t'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Precio final según lote elegido <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Final price by chosen lot <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
-<?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
-<?php unset($__attributesOriginal618076cb2e02e8026719e8ebca35f227); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal618076cb2e02e8026719e8ebca35f227)): ?>
-<?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
-<?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
-<?php endif; ?></li>
-                    </ul>
-                    <a href="#contacto"
-                        class="eyebrow mt-8 inline-flex w-full items-center justify-center rounded-full bg-terra-500 px-6 py-4 text-[0.65rem] text-sand-50 transition-all duration-300 hover:bg-terra-600">
-                        <?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('t'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Solicitar lista de precios <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Request the price list <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
+<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Selecciona un lote para ver los detalles <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Select a lot to see the details <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
 <?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
@@ -248,10 +174,163 @@
 <?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
 <?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
 <?php endif; ?>
-                    </a>
+                            </p>
+                            <div class="mt-7 space-y-3 border-t border-sand-50/10 pt-6">
+                                <p class="flex items-center gap-3 text-sm text-sand-100/80"><span class="h-3 w-3 rounded-sm" style="background: var(--color-terra-400)"></span><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('t'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Disponible <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Available <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
+<?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
+<?php unset($__attributesOriginal618076cb2e02e8026719e8ebca35f227); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal618076cb2e02e8026719e8ebca35f227)): ?>
+<?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
+<?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
+<?php endif; ?> <span class="text-sand-200/50">· <?php echo e($avail); ?></span></p>
+                                <?php if($reserved): ?>
+                                <p class="flex items-center gap-3 text-sm text-sand-100/80"><span class="h-3 w-3 rounded-sm" style="background: var(--color-olive-400)"></span><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('t'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Apartado <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Reserved <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
+<?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
+<?php unset($__attributesOriginal618076cb2e02e8026719e8ebca35f227); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal618076cb2e02e8026719e8ebca35f227)): ?>
+<?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
+<?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
+<?php endif; ?> <span class="text-sand-200/50">· <?php echo e($reserved); ?></span></p>
+                                <?php endif; ?>
+                            </div>
+                            <div class="mt-7 border-t border-sand-50/10 pt-6">
+                                <p class="eyebrow text-[0.5rem] text-ocean-300"><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('t'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Precios desde <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Pricing from <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
+<?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
+<?php unset($__attributesOriginal618076cb2e02e8026719e8ebca35f227); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal618076cb2e02e8026719e8ebca35f227)): ?>
+<?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
+<?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
+<?php endif; ?></p>
+                                <p class="display mt-1 text-3xl font-light text-sand-50">$1,163,468 <span class="text-base text-sand-200/60">USD</span></p>
+                            </div>
+                        </div>
+                    </template>
+
+                    <template x-if="active">
+                        <div class="py-2">
+                            <div class="flex items-center justify-between">
+                                <p class="eyebrow text-[0.6rem] text-ocean-300"><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('t'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Etapa 1 · Villas <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Stage 1 · Villas <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
+<?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
+<?php unset($__attributesOriginal618076cb2e02e8026719e8ebca35f227); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal618076cb2e02e8026719e8ebca35f227)): ?>
+<?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
+<?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
+<?php endif; ?></p>
+                                <span class="eyebrow rounded-full px-3 py-1 text-[0.5rem]"
+                                    :class="active && active.status === 'available' ? 'bg-terra-400/20 text-terra-300' : 'bg-olive-400/20 text-olive-300'">
+                                    <span x-show="active && active.status === 'available'"><span class="lang-es">Disponible</span><span class="lang-en">Available</span></span>
+                                    <span x-show="active && active.status === 'reserved'"><span class="lang-es">Apartado</span><span class="lang-en">Reserved</span></span>
+                                </span>
+                            </div>
+                            <p class="display mt-3 text-5xl font-light text-sand-50">
+                                <span class="lang-es">Lote</span><span class="lang-en">Lot</span> <span x-text="active && active.n"></span>
+                            </p>
+                            <div class="mt-6 border-t border-sand-50/10 pt-6" x-show="active && active.area">
+                                <p class="display text-3xl font-light text-terra-300"><span x-text="active && active.area"></span></p>
+                                <p class="eyebrow mt-1 text-[0.55rem] text-sand-200/60"><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('t'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> de terreno <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> of land <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
+<?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
+<?php unset($__attributesOriginal618076cb2e02e8026719e8ebca35f227); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal618076cb2e02e8026719e8ebca35f227)): ?>
+<?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
+<?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
+<?php endif; ?></p>
+                            </div>
+                            <a href="#contacto"
+                                class="eyebrow mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-4 text-[0.65rem] transition-all duration-300"
+                                :class="active && active.status === 'available' ? 'bg-terra-500 text-sand-50 hover:bg-terra-600' : 'border border-sand-50/20 text-sand-200/70 hover:border-sand-50/40'">
+                                <span x-show="active && active.status === 'available'"><span class="lang-es">Solicitar información</span><span class="lang-en">Request information</span></span>
+                                <span x-show="active && active.status !== 'available'"><span class="lang-es">Ver otras opciones</span><span class="lang-en">See other options</span></span>
+                            </a>
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
+
+        <p class="mt-8 text-center text-xs text-sand-200/40">
+            <?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('t'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+                 <?php $__env->slot('es', null, []); ?> Plano de carácter ilustrativo. Cada lote se cotiza por su superficie; te compartimos la lista completa de precios a solicitud. <?php $__env->endSlot(); ?>
+                 <?php $__env->slot('en', null, []); ?> Illustrative plan. Each lot is priced by its area; we'll share the full price list on request. <?php $__env->endSlot(); ?>
+             <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
+<?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
+<?php unset($__attributesOriginal618076cb2e02e8026719e8ebca35f227); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal618076cb2e02e8026719e8ebca35f227)): ?>
+<?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
+<?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
+<?php endif; ?>
+        </p>
     </div>
 </section>
 <?php /**PATH /Users/alex/Documents/ricardo/casas-the-estates/app/resources/views/partials/disponibilidad.blade.php ENDPATH**/ ?>
