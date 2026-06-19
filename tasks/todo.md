@@ -3,18 +3,22 @@
 Cloned from the Candé / Real del Mar app on 2026-06-19 as the starting template.
 The site currently still renders Candé content — the work below rebrands it to The Estates.
 
-## Now — rebrand the clone
-- [ ] **Hero** — swap to an Estates render (candidate: `estates-vista-mar.jpg`), new headline/subhead
-- [ ] **Residencias / product** — replace Candé casas/depas tabs with Prototype **A / B / C** (2/3/4 rec.)
-      using the m²/ft² + "desde $USD" data in `summary.md`
-- [ ] **Galería** — replace `rdm-*`/`cande-*` images with the `estates-*` renders
-- [ ] **Disponibilidad** — Stage 1 lots (0–8, 110–122); 21 disponible / 2 apartado / 0 vendido.
-      Need per-lot price data wired (tables in `incoming/raw-delivery/5. TABLA DE PRECIOS/`)
-- [ ] **Esencia / intro copy** — new The Estates positioning (Mediterranean villas, ocean views, within Real del Mar)
-- [ ] **SEO** — title, description, OG image (build `og-estates.jpg`), canonical/og:url via `SITE_URL`
-- [ ] **Branding** — confirm logo/wordmark ("THE ESTATES"), color palette (delivery uses navy/white), fonts
-- [ ] Remove leftover Candé assets (`cande-*`, `rdm-*` in `public/images/`) once no longer referenced
-- [ ] `APP_NAME` in `.env` (still "Laravel"); page `<title>`/meta
+## Done — rebrand v1 (2026-06-19)
+- [x] **Design system** — Cormorant Garamond display serif, deeper navy palette, new olive/sage accent token
+- [x] **Logo** — "The Estates" typographic wordmark (nav, preloader, footer)
+- [x] **Hero** — `estates-vista-mar.jpg` + new bilingual copy & dual CTAs
+- [x] **Esencia** — new positioning copy + villa render (replaced the Candé video block)
+- [x] **Residencias** — A/B/C prototype cards with real m²/ft²/USD + cinematic showcase
+- [x] **Disponibilidad** — redesigned Stage-1 overview (master plan + 21/2/22 stats + pricing)
+- [x] **Galería** — `estates-*` renders + new copy
+- [x] **Amenidades / Contacto** — copy + form options updated
+- [x] **SEO/meta/OG** — title, description, `og-estates.jpg`, footer, WhatsApp
+
+## Now — polish & confirm
+- [ ] Per-lot price data: wire the full 2/3/4-bedroom tables (interactive lot picker once we have a vector site plan)
+- [ ] Remove leftover Candé assets (`cande-*`, `rdm-*` in `public/images/`) now mostly unreferenced (amenities `rdm-am-*` still used — those are Real del Mar community amenities)
+- [ ] `APP_NAME` in `.env` (still "Laravel")
+- [ ] Review the Cormorant serif direction with Ricardo — swap if a brand font exists
 
 ## Blocked / needs Ricardo
 - [ ] **Renders vs. real photos** — whole image set is renders; confirm if the Candé "no renders" rule applies
