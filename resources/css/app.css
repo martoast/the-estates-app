@@ -318,9 +318,9 @@ body {
     transform-origin: center;
     transition: opacity 0.35s ease, filter 0.25s ease, transform 0.25s ease;
 }
-.plan-lot--available { fill: var(--color-terra-400); opacity: 0.95; }
-.plan-lot--sold      { fill: var(--color-stone-warm); opacity: 0.62; }
-.plan-lot--reserved  { fill: var(--color-ocean-400); opacity: 0.85; }
+.plan-lot--available { fill: var(--color-terra-400); opacity: 0.78; }
+.plan-lot--sold      { fill: var(--color-stone-warm); opacity: 0.55; }
+.plan-lot--reserved  { fill: var(--color-olive-400); opacity: 0.8; }
 .plan-lot:hover {
     filter: brightness(1.22) saturate(1.15);
     opacity: 1;
@@ -332,10 +332,23 @@ body {
 /* Depth: drop-shadow lifts the plan off the dark band */
 .plan-svg { filter: drop-shadow(0 26px 44px rgba(0, 0, 0, 0.6)); }
 
-@keyframes planPulse { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+@keyframes planPulse { 0%, 100% { opacity: 0.62; } 50% { opacity: 0.85; } }
 @media (prefers-reduced-motion: no-preference) {
-    .plan-lot--available { animation: planPulse 3s ease-in-out infinite; }
+    .plan-lot--available { animation: planPulse 3.4s ease-in-out infinite; }
 }
+
+/* Lot number labels riding on each parcel */
+.plan-label {
+    fill: var(--color-ocean-950);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
+    opacity: 0.75;
+    transition: opacity 0.25s ease;
+}
+.plan-label.is-dim { opacity: 0.12; }
 
 /* Apartments elevation — translucent tints over the (inverted) line drawing
    directly on the dark band, so the building facade stays visible through. */
