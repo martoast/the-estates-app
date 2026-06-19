@@ -8,8 +8,11 @@
             class="kenburns h-full w-full object-cover object-center"
             fetchpriority="high"
         >
-        {{-- Readability gradient — keep the image the star --}}
-        <div class="absolute inset-0 bg-gradient-to-t from-ocean-950/80 via-ocean-950/10 to-ocean-950/30"></div>
+        {{-- Readability scrims — darken where the copy sits, keep the image the star --}}
+        {{-- Bottom-up (covers mobile centered copy + buttons) --}}
+        <div class="absolute inset-0 bg-gradient-to-t from-ocean-950/90 via-ocean-950/25 to-ocean-950/35"></div>
+        {{-- Left scrim (desktop, where the headline is left-aligned) --}}
+        <div class="absolute inset-0 hidden bg-gradient-to-r from-ocean-950/85 via-ocean-950/30 to-transparent lg:block"></div>
     </div>
 
     {{-- Copy --}}

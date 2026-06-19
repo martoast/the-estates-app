@@ -9,7 +9,10 @@
             fetchpriority="high"
         >
         
-        <div class="absolute inset-0 bg-gradient-to-t from-ocean-950/80 via-ocean-950/10 to-ocean-950/30"></div>
+        
+        <div class="absolute inset-0 bg-gradient-to-t from-ocean-950/90 via-ocean-950/25 to-ocean-950/35"></div>
+        
+        <div class="absolute inset-0 hidden bg-gradient-to-r from-ocean-950/85 via-ocean-950/30 to-transparent lg:block"></div>
     </div>
 
     
