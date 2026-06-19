@@ -124,7 +124,7 @@
 
                 <a
                     href="#contacto"
-                    class="eyebrow rounded-full px-5 py-2.5 text-[0.65rem] text-sand-50 transition-all duration-300 bg-terra-500 hover:bg-terra-600"
+                    class="eyebrow whitespace-nowrap rounded-full px-5 py-2.5 text-[0.65rem] text-sand-50 transition-all duration-300 bg-terra-500 hover:bg-terra-600"
                 ><span class="lang-es">Agendar visita</span><span class="lang-en">Schedule a visit</span></a>
             </div>
 
