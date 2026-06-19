@@ -74,8 +74,8 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-                     <?php $__env->slot('es', null, []); ?> Tres formas de <em>habitarla</em> <?php $__env->endSlot(); ?>
-                     <?php $__env->slot('en', null, []); ?> Three ways to <em>call it home</em> <?php $__env->endSlot(); ?>
+                     <?php $__env->slot('es', null, []); ?> Dos, tres o <em>cuatro recámaras</em> <?php $__env->endSlot(); ?>
+                     <?php $__env->slot('en', null, []); ?> Two, three or <em>four bedrooms</em> <?php $__env->endSlot(); ?>
                  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>

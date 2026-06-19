@@ -47,8 +47,8 @@
             <p class="eyebrow text-terra-500"><x-t><x-slot:es>Residencias</x-slot:es><x-slot:en>Residences</x-slot:en></x-t></p>
             <h2 class="display mt-6 text-5xl font-light text-ink sm:text-6xl">
                 <x-t>
-                    <x-slot:es>Tres formas de <em>habitarla</em></x-slot:es>
-                    <x-slot:en>Three ways to <em>call it home</em></x-slot:en>
+                    <x-slot:es>Dos, tres o <em>cuatro recámaras</em></x-slot:es>
+                    <x-slot:en>Two, three or <em>four bedrooms</em></x-slot:en>
                 </x-t>
             </h2>
             <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
