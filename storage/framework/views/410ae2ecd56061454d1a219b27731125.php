@@ -18,28 +18,7 @@
     
     <div class="relative mx-auto w-full max-w-7xl px-6 pb-28 text-center lg:px-10 lg:pb-20 lg:text-left">
         <div class="reveal-group is-revealed mx-auto max-w-3xl lg:mx-0">
-            <p class="eyebrow text-[0.6rem] text-terra-300 sm:text-[0.65rem]">
-                <?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('t'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Real del Mar · Tijuana, Baja California <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Real del Mar · Tijuana, Baja California <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
-<?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
-<?php unset($__attributesOriginal618076cb2e02e8026719e8ebca35f227); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal618076cb2e02e8026719e8ebca35f227)): ?>
-<?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
-<?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
-<?php endif; ?>
-            </p>
-            <h1 class="display mt-5 text-5xl font-light text-sand-50 drop-shadow-[0_2px_24px_rgba(10,22,38,0.6)] sm:text-6xl lg:text-7xl">
+            <h1 class="display text-5xl font-light text-sand-50 drop-shadow-[0_2px_24px_rgba(10,22,38,0.6)] sm:text-6xl lg:text-7xl">
                 <?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>

@@ -18,10 +18,7 @@
     {{-- Copy --}}
     <div class="relative mx-auto w-full max-w-7xl px-6 pb-28 text-center lg:px-10 lg:pb-20 lg:text-left">
         <div class="reveal-group is-revealed mx-auto max-w-3xl lg:mx-0">
-            <p class="eyebrow text-[0.6rem] text-terra-300 sm:text-[0.65rem]">
-                <x-t><x-slot:es>Real del Mar · Tijuana, Baja California</x-slot:es><x-slot:en>Real del Mar · Tijuana, Baja California</x-slot:en></x-t>
-            </p>
-            <h1 class="display mt-5 text-5xl font-light text-sand-50 drop-shadow-[0_2px_24px_rgba(10,22,38,0.6)] sm:text-6xl lg:text-7xl">
+            <h1 class="display text-5xl font-light text-sand-50 drop-shadow-[0_2px_24px_rgba(10,22,38,0.6)] sm:text-6xl lg:text-7xl">
                 <x-t>
                     <x-slot:es>Una villa <em>mediterránea</em><br>sobre el Pacífico</x-slot:es>
                     <x-slot:en>A <em>Mediterranean</em> villa<br>above the Pacific</x-slot:en>
