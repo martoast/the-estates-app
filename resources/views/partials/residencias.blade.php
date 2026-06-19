@@ -53,8 +53,8 @@
             </h2>
             <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
                 <x-t>
-                    <x-slot:es>Todas las villas comparten un nivel principal de 206 m²; cada prototipo amplía el nivel inferior para sumar 2, 3 o 4 recámaras.</x-slot:es>
-                    <x-slot:en>Every villa shares a 206 m² main level; each prototype extends the lower level to add 2, 3 or 4 bedrooms.</x-slot:en>
+                    <x-slot:es>La misma arquitectura mediterránea, a la medida de tu vida. Elige el espacio que necesitas y despierta cada día frente al Pacífico.</x-slot:es>
+                    <x-slot:en>The same Mediterranean architecture, tailored to your life. Choose the space you need and wake each day to the Pacific.</x-slot:en>
                 </x-t>
             </p>
         </div>

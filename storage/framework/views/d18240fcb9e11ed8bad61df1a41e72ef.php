@@ -98,8 +98,8 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-                     <?php $__env->slot('es', null, []); ?> Todas las villas comparten un nivel principal de 206 m²; cada prototipo amplía el nivel inferior para sumar 2, 3 o 4 recámaras. <?php $__env->endSlot(); ?>
-                     <?php $__env->slot('en', null, []); ?> Every villa shares a 206 m² main level; each prototype extends the lower level to add 2, 3 or 4 bedrooms. <?php $__env->endSlot(); ?>
+                     <?php $__env->slot('es', null, []); ?> La misma arquitectura mediterránea, a la medida de tu vida. Elige el espacio que necesitas y despierta cada día frente al Pacífico. <?php $__env->endSlot(); ?>
+                     <?php $__env->slot('en', null, []); ?> The same Mediterranean architecture, tailored to your life. Choose the space you need and wake each day to the Pacific. <?php $__env->endSlot(); ?>
                  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
