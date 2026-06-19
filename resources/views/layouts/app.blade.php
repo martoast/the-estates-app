@@ -56,7 +56,7 @@
 <body
     x-data="{ navSolid: false, navOpen: false }"
     @scroll.window.passive="navSolid = window.scrollY > 40"
-    :class="navOpen ? 'overflow-hidden lg:overflow-auto' : ''"
+    :class="navOpen ? 'overflow-hidden xl:overflow-auto' : ''"
 >
 
     {{-- ============================== PRELOADER ============================== --}}
@@ -97,7 +97,7 @@
             </a>
 
             {{-- Desktop links --}}
-            <div class="hidden items-center gap-8 lg:flex">
+            <div class="hidden items-center gap-7 xl:flex">
                 @foreach ($navLinks as $item)
                     <a
                         href="{{ $item['href'] }}"
@@ -127,7 +127,7 @@
 
             {{-- Mobile hamburger --}}
             <button
-                class="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+                class="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 xl:hidden"
                 @click="navOpen = !navOpen"
                 aria-label="Menú"
             >
@@ -142,7 +142,7 @@
         <div
             x-show="navOpen"
             x-collapse.duration.400ms
-            class="lg:hidden"
+            class="xl:hidden"
         >
             <div class="space-y-1 border-t border-ink/5 bg-sand-50 px-6 pb-8 pt-4">
                 @foreach ($navLinks as $item)
