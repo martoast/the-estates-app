@@ -50,7 +50,7 @@
     <meta name="twitter:description" content="Villas privadas de 2, 3 y 4 recámaras con vistas al mar dentro de Real del Mar, Tijuana. Arquitectura mediterránea, desde 1.16M USD.">
     <meta name="twitter:image" content="https://casas-the-estates.netlify.app/images/og-estates.jpg">
 
-    <link rel="preload" as="style" href="/site-assets/assets/app-BlxGycwR.css" /><link rel="modulepreload" as="script" href="/site-assets/assets/app-CgZdIWxX.js" /><link rel="stylesheet" href="/site-assets/assets/app-BlxGycwR.css" /><script type="module" src="/site-assets/assets/app-CgZdIWxX.js"></script></head>
+    <link rel="preload" as="style" href="/site-assets/assets/app-0vwNIXSL.css" /><link rel="modulepreload" as="script" href="/site-assets/assets/app-CgZdIWxX.js" /><link rel="stylesheet" href="/site-assets/assets/app-0vwNIXSL.css" /><script type="module" src="/site-assets/assets/app-CgZdIWxX.js"></script></head>
 <body
     x-data="{ navSolid: false, navOpen: false }"
     @scroll.window.passive="navSolid = window.scrollY > 40"
@@ -60,7 +60,8 @@
     
     <div id="preloader" class="fixed inset-0 z-[100] flex items-center justify-center bg-ocean-950">
         <div class="preloader-mark flex flex-col items-center">
-            <span class="text-2xl sm:text-3xl text-sand-50 font-display font-light uppercase leading-none tracking-[0.22em] whitespace-nowrap select-none" role="img" aria-label="The Estates">The&nbsp;Estates</span>
+            <img src="/images/the-estates-logo-white.png" alt="The Estates at Real del Mar"
+        class="h-16 sm:h-20 w-auto">
             <div class="mt-10 h-px w-44 overflow-hidden rounded-full bg-sand-50/15">
                 <div id="preloader-bar" class="h-full w-0 rounded-full bg-terra-400 transition-[width] duration-300 ease-out"></div>
             </div>
@@ -82,7 +83,14 @@
                 :class="navSolid || navOpen ? 'text-ink' : 'text-sand-50'"
                 aria-label="The Estates — inicio"
             >
-                <span class="text-xl lg:text-2xl font-display font-light uppercase leading-none tracking-[0.22em] whitespace-nowrap select-none" role="img" aria-label="The Estates">The&nbsp;Estates</span>
+                <span class="relative block h-11 lg:h-14" role="img" aria-label="The Estates at Real del Mar">
+        <img src="/images/the-estates-logo-white.png" alt="" aria-hidden="true"
+            class="h-11 lg:h-14 w-auto transition-opacity duration-500"
+            :class="navSolid || navOpen ? 'opacity-0' : 'opacity-100'">
+        <img src="/images/the-estates-logo-ink.png" alt="" aria-hidden="true"
+            class="absolute inset-0 h-11 lg:h-14 w-auto transition-opacity duration-500"
+            :class="navSolid || navOpen ? 'opacity-100' : 'opacity-0'">
+    </span>
             </a>
 
             
@@ -1435,7 +1443,8 @@
         <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
             <div class="grid gap-12 md:grid-cols-3">
                 <div class="text-sand-50">
-                    <span class="text-xl font-display font-light uppercase leading-none tracking-[0.22em] whitespace-nowrap select-none" role="img" aria-label="The Estates">The&nbsp;Estates</span>
+                    <img src="/images/the-estates-logo-white.png" alt="The Estates at Real del Mar"
+        class="h-14 w-auto">
                     <p class="mt-6 max-w-xs text-sm leading-relaxed text-sand-200/70">
                         <span class="lang-es">Una comunidad privada de villas mediterráneas dentro de Real del Mar, Tijuana — frente al Pacífico.</span><span class="lang-en">A private community of Mediterranean villas within Real del Mar, Tijuana — facing the Pacific.</span>
                     </p>

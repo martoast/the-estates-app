@@ -62,7 +62,7 @@
     
     <div id="preloader" class="fixed inset-0 z-[100] flex items-center justify-center bg-ocean-950">
         <div class="preloader-mark flex flex-col items-center">
-            <?php echo $__env->make('partials.logo', ['class' => 'text-2xl sm:text-3xl text-sand-50'], array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+            <?php echo $__env->make('partials.logo', ['variant' => 'white', 'class' => 'h-16 sm:h-20'], array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
             <div class="mt-10 h-px w-44 overflow-hidden rounded-full bg-sand-50/15">
                 <div id="preloader-bar" class="h-full w-0 rounded-full bg-terra-400 transition-[width] duration-300 ease-out"></div>
             </div>
@@ -92,7 +92,7 @@
                 :class="navSolid || navOpen ? 'text-ink' : 'text-sand-50'"
                 aria-label="The Estates — inicio"
             >
-                <?php echo $__env->make('partials.logo', ['class' => 'text-xl lg:text-2xl'], array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+                <?php echo $__env->make('partials.logo', ['variant' => 'auto', 'class' => 'h-11 lg:h-14'], array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
             </a>
 
             
@@ -171,7 +171,7 @@
         <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
             <div class="grid gap-12 md:grid-cols-3">
                 <div class="text-sand-50">
-                    <?php echo $__env->make('partials.logo', ['class' => 'text-xl'], array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+                    <?php echo $__env->make('partials.logo', ['variant' => 'white', 'class' => 'h-14'], array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
                     <p class="mt-6 max-w-xs text-sm leading-relaxed text-sand-200/70">
                         <?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
