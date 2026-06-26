@@ -1,15 +1,15 @@
 
 <?php
     $amenidades = [
-        ['img' => 'rdm-am-golf.webp',        't_es' => 'Campo de golf',      't_en' => 'Golf course',     'd_es' => '8 hoyos con vistas espectaculares al mar.',            'd_en' => '8 holes with stunning sea views.'],
-        ['img' => 'rdm-am-hipico.webp',      't_es' => 'Club hípico',        't_en' => 'Equestrian club',  'd_es' => 'Cabalgatas y espacios para disfrutar junto al mar.',   'd_en' => 'Spaces to enjoy horseback riding by the sea.'],
-        ['img' => 'rdm-am-club.webp',        't_es' => 'Casa Club',          't_en' => 'Clubhouse',        'd_es' => 'Espacios sociales elegantes para convivir y relajarse.', 'd_en' => 'Elegant social spaces to gather and relax.'],
-        ['img' => 'rdm-am-alberca.webp',     't_es' => 'Alberca',            't_en' => 'Pool',             'd_es' => 'Descanso y disfrute en un entorno privado.',           'd_en' => 'Rest and enjoyment in a private setting.'],
-        ['img' => 'rdm-am-padel.webp',       't_es' => 'Pádel y Tenis',      't_en' => 'Padel & Tennis',   'd_es' => 'Energía y precisión en canchas privadas.',             'd_en' => 'Energy and precision on private courts.'],
+        ['img' => 'rdm-am-golf.webp',        't_es' => 'Campo de golf',      't_en' => 'Golf course',     'd_es' => '18 hoyos con vistas espectaculares al mar.',           'd_en' => '18 holes with stunning sea views.'],
+        ['img' => 'rdm-am-hipico.webp',      't_es' => 'Club hípico',        't_en' => 'Equestrian club',  'd_es' => 'Para los amantes del mundo ecuestre: cabalgatas y caballerizas frente al mar.', 'd_en' => 'For lovers of the equestrian world: horseback riding and stables by the sea.'],
+        ['img' => 'estates-am-casaclub.jpg', 't_es' => 'Casa Club',          't_en' => 'Clubhouse',        'd_es' => 'Espacios sociales elegantes para convivir y relajarse.', 'd_en' => 'Elegant social spaces to gather and relax.'],
+        ['img' => 'estates-am-hotel.jpg',    't_es' => 'Hotel',             't_en' => 'Hotel',            'd_es' => 'Hospedaje y descanso de resort, con todos los servicios a tu alcance.', 'd_en' => 'Resort lodging and relaxation, with every service within reach.'],
+        ['img' => 'rdm-am-padel.webp',       't_es' => 'Canchas deportivas', 't_en' => 'Sports courts',    'd_es' => 'Disfruta las canchas de pádel y tenis en un entorno privado.', 'd_en' => 'Enjoy the padel and tennis courts in a private setting.'],
         ['img' => 'rdm-am-parque.webp',      't_es' => 'Parque ecológico',   't_en' => 'Ecological park',  'd_es' => 'Áreas verdes para reconectar con la naturaleza.',      'd_en' => 'Green areas to connect with nature.'],
         ['img' => 'rdm-am-escuela.webp',     't_es' => 'Escuela privada',    't_en' => 'Private school',   'd_es' => 'Educación de primer nivel dentro del complejo.',       'd_en' => 'First-class education within the community.'],
-        ['img' => 'rdm-am-restaurante.webp', 't_es' => 'Restaurante y bar',  't_en' => 'Restaurant & bar', 'd_es' => 'Gastronomía y coctelería con vistas incomparables.',   'd_en' => 'Cuisine and cocktails with incomparable views.'],
-        ['img' => 'rdm-am-spa.jpg',          't_es' => 'Spa (próximamente)', 't_en' => 'Spa (coming soon)','d_es' => 'Bienestar y relajación en un entorno de lujo.',        'd_en' => 'Wellness and relaxation in a luxurious setting.'],
+        ['img' => 'estates-am-restaurante.jpg', 't_es' => 'Restaurante y bar', 't_en' => 'Restaurant & bar','d_es' => 'Gastronomía y coctelería con vistas incomparables.',   'd_en' => 'Cuisine and cocktails with incomparable views.'],
+        ['img' => 'rdm-am-spa.jpg',          't_es' => 'Spa',               't_en' => 'Spa',              'd_es' => 'Disfruta esta experiencia de bienestar dentro del hotel.', 'd_en' => 'Enjoy this wellness experience inside the hotel.'],
     ];
 ?>
 
@@ -29,7 +29,7 @@
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Amenidades <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Amenities <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
+<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Real del Mar <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Real del Mar <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
 <?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
@@ -50,8 +50,8 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-                         <?php $__env->slot('es', null, []); ?> Eleva tu <em>día a día</em> <?php $__env->endSlot(); ?>
-                         <?php $__env->slot('en', null, []); ?> Elevate your <em>everyday</em> <?php $__env->endSlot(); ?>
+                         <?php $__env->slot('es', null, []); ?> Todo esto te espera en <em>Real del Mar</em> <?php $__env->endSlot(); ?>
+                         <?php $__env->slot('en', null, []); ?> All of this awaits you at <em>Real del Mar</em> <?php $__env->endSlot(); ?>
                      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>

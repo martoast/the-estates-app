@@ -13,8 +13,8 @@
                 <p class="eyebrow text-terra-300"><x-t><x-slot:es>Ubicación</x-slot:es><x-slot:en>Location</x-slot:en></x-t></p>
                 <h2 class="display mt-6 text-4xl font-light text-sand-50 sm:text-5xl lg:text-6xl">
                     <x-t>
-                        <x-slot:es>La zona costa de<br><em>Baja California</em></x-slot:es>
-                        <x-slot:en>The coast of<br><em>Baja California</em></x-slot:en>
+                        <x-slot:es>Dentro de Real del Mar,<br>en la zona costa de <em>Baja California</em></x-slot:es>
+                        <x-slot:en>Inside Real del Mar,<br>on the coast of <em>Baja California</em></x-slot:en>
                     </x-t>
                 </h2>
                 <p class="mt-8 text-lg leading-relaxed text-sand-100/80">
@@ -27,9 +27,9 @@
                 {{-- Drive times --}}
                 <div class="reveal-group mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-sand-50/15 bg-sand-50/10 backdrop-blur-sm sm:grid-cols-3">
                     @foreach ([
-                        ['t' => '20 min', 'es' => 'Tijuana', 'en' => 'Tijuana'],
-                        ['t' => '10 min', 'es' => 'Rosarito', 'en' => 'Rosarito'],
-                        ['t' => '40 min', 'es' => 'Frontera San Diego', 'en' => 'San Diego border'],
+                        ['t' => '8 min', 'es' => 'Frontera', 'en' => 'Border'],
+                        ['t' => '10 min', 'es' => 'Zona Río Tijuana', 'en' => 'Tijuana River Zone'],
+                        ['t' => '13 min', 'es' => 'Aeropuerto', 'en' => 'Airport'],
                     ] as $destino)
                         <div class="flex items-center justify-center gap-3 bg-ocean-950/40 px-5 py-5 text-center sm:flex-col sm:gap-0 sm:px-6 sm:py-7">
                             <p class="display whitespace-nowrap text-3xl font-light leading-none text-sand-50 sm:text-4xl">{{ $destino['t'] }}</p>
@@ -37,7 +37,7 @@
                         </div>
                     @endforeach
                 </div>
-                <p class="reveal mt-4 text-xs text-sand-200/40"><x-t><x-slot:es>Tiempos de traslado aproximados.</x-slot:es><x-slot:en>Approximate travel times.</x-slot:en></x-t></p>
+                <p class="reveal mt-4 text-xs text-sand-200/40"><x-t><x-slot:es>Tiempos con las nuevas vialidades, validados por el Arq. Carlos Rivera.</x-slot:es><x-slot:en>Times with the new roadways, validated by Arch. Carlos Rivera.</x-slot:en></x-t></p>
             </div>
 
             {{-- Map column --}}

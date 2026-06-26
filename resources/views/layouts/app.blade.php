@@ -74,7 +74,7 @@
         $navLinks = [
             ['es' => 'Residencias', 'en' => 'Residences', 'href' => '#residencias'],
             ['es' => 'Disponibilidad', 'en' => 'Availability', 'href' => '#disponibilidad'],
-            ['es' => 'Amenidades', 'en' => 'Amenities', 'href' => '#amenidades'],
+            ['es' => 'Real del Mar', 'en' => 'Real del Mar', 'href' => '#amenidades'],
             ['es' => 'Galería', 'en' => 'Gallery', 'href' => '#galeria'],
             ['es' => 'Ubicación', 'en' => 'Location', 'href' => '#ubicacion'],
         ];

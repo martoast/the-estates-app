@@ -40,8 +40,8 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-                         <?php $__env->slot('es', null, []); ?> La zona costa de<br><em>Baja California</em> <?php $__env->endSlot(); ?>
-                         <?php $__env->slot('en', null, []); ?> The coast of<br><em>Baja California</em> <?php $__env->endSlot(); ?>
+                         <?php $__env->slot('es', null, []); ?> Dentro de Real del Mar,<br>en la zona costa de <em>Baja California</em> <?php $__env->endSlot(); ?>
+                         <?php $__env->slot('en', null, []); ?> Inside Real del Mar,<br>on the coast of <em>Baja California</em> <?php $__env->endSlot(); ?>
                      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
@@ -81,9 +81,9 @@
                 
                 <div class="reveal-group mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-sand-50/15 bg-sand-50/10 backdrop-blur-sm sm:grid-cols-3">
                     <?php $__currentLoopData = [
-                        ['t' => '20 min', 'es' => 'Tijuana', 'en' => 'Tijuana'],
-                        ['t' => '10 min', 'es' => 'Rosarito', 'en' => 'Rosarito'],
-                        ['t' => '40 min', 'es' => 'Frontera San Diego', 'en' => 'San Diego border'],
+                        ['t' => '8 min', 'es' => 'Frontera', 'en' => 'Border'],
+                        ['t' => '10 min', 'es' => 'Zona Río Tijuana', 'en' => 'Tijuana River Zone'],
+                        ['t' => '13 min', 'es' => 'Aeropuerto', 'en' => 'Airport'],
                     ]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $destino): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="flex items-center justify-center gap-3 bg-ocean-950/40 px-5 py-5 text-center sm:flex-col sm:gap-0 sm:px-6 sm:py-7">
                             <p class="display whitespace-nowrap text-3xl font-light leading-none text-sand-50 sm:text-4xl"><?php echo e($destino['t']); ?></p>
@@ -100,7 +100,7 @@
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Tiempos de traslado aproximados. <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Approximate travel times. <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
+<?php $component->withAttributes([]); ?> <?php $__env->slot('es', null, []); ?> Tiempos con las nuevas vialidades, validados por el Arq. Carlos Rivera. <?php $__env->endSlot(); ?> <?php $__env->slot('en', null, []); ?> Times with the new roadways, validated by Arch. Carlos Rivera. <?php $__env->endSlot(); ?> <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal618076cb2e02e8026719e8ebca35f227)): ?>
 <?php $attributes = $__attributesOriginal618076cb2e02e8026719e8ebca35f227; ?>
