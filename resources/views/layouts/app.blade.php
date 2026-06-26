@@ -75,7 +75,6 @@
             ['es' => 'Residencias', 'en' => 'Residences', 'href' => '#residencias'],
             ['es' => 'Disponibilidad', 'en' => 'Availability', 'href' => '#disponibilidad'],
             ['es' => 'Real del Mar', 'en' => 'Real del Mar', 'href' => '#amenidades'],
-            ['es' => 'Galería', 'en' => 'Gallery', 'href' => '#galeria'],
             ['es' => 'Ubicación', 'en' => 'Location', 'href' => '#ubicacion'],
         ];
     @endphp
@@ -101,7 +100,7 @@
                 @foreach ($navLinks as $item)
                     <a
                         href="{{ $item['href'] }}"
-                        class="eyebrow text-[0.65rem] transition-colors duration-300"
+                        class="eyebrow whitespace-nowrap text-[0.65rem] transition-colors duration-300"
                         :class="navSolid ? 'text-ink-soft hover:text-terra-500' : 'text-sand-100 hover:text-white'"
                     ><span class="lang-es">{{ $item['es'] }}</span><span class="lang-en">{{ $item['en'] }}</span></a>
                 @endforeach
