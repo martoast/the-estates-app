@@ -8,7 +8,7 @@
         ['img' => 'rdm-am-padel.webp',       't_es' => 'Canchas deportivas', 't_en' => 'Sports courts',    'd_es' => 'Disfruta las canchas de pádel y tenis en un entorno privado.', 'd_en' => 'Enjoy the padel and tennis courts in a private setting.'],
         ['img' => 'rdm-am-parque.webp',      't_es' => 'Parque ecológico',   't_en' => 'Ecological park',  'd_es' => 'Áreas verdes para reconectar con la naturaleza.',      'd_en' => 'Green areas to connect with nature.'],
         ['img' => 'rdm-am-escuela.webp',     't_es' => 'Escuela privada',    't_en' => 'Private school',   'd_es' => 'Educación de primer nivel dentro del complejo.',       'd_en' => 'First-class education within the community.'],
-        ['img' => 'estates-am-restaurante.jpg', 't_es' => 'Restaurante y bar', 't_en' => 'Restaurant & bar','d_es' => 'Gastronomía y coctelería con vistas incomparables.',   'd_en' => 'Cuisine and cocktails with incomparable views.'],
+        ['img' => 'estates-am-restaurante.jpg', 't_es' => 'Restaurante y bar', 't_en' => 'Restaurant & bar','d_es' => 'Buena comida y un lugar para reunirte, a unos pasos de casa.', 'd_en' => 'Good food and a place to gather, just steps from home.'],
         ['img' => 'rdm-am-spa.jpg',          't_es' => 'Spa',               't_en' => 'Spa',              'd_es' => 'Disfruta esta experiencia de bienestar dentro del hotel.', 'd_en' => 'Enjoy this wellness experience inside the hotel.'],
     ];
 @endphp
