@@ -374,7 +374,8 @@
 <?php $component = $__componentOriginal618076cb2e02e8026719e8ebca35f227; ?>
 <?php unset($__componentOriginal618076cb2e02e8026719e8ebca35f227); ?>
 <?php endif; ?></a></li>
-                        <li><a href="https://wa.me/526610000000" target="_blank" rel="noopener" class="transition-colors hover:text-terra-300">WhatsApp</a></li>
+                        <li><a href="https://wa.me/526641158106" target="_blank" rel="noopener" class="transition-colors hover:text-terra-300">WhatsApp · +52 664 115 8106</a></li>
+                        <li><a href="mailto:ventas@cityinmobiliaria.mx" class="transition-colors hover:text-terra-300">ventas@cityinmobiliaria.mx</a></li>
                         <li><a href="#disponibilidad" class="transition-colors hover:text-terra-300"><?php if (isset($component)) { $__componentOriginal618076cb2e02e8026719e8ebca35f227 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal618076cb2e02e8026719e8ebca35f227 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.t','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -453,9 +454,9 @@
     
     <a
         :href="$store.lang.current === 'en'
-            ? 'https://wa.me/526610000000?text=Hi%2C%20I%27m%20interested%20in%20The%20Estates%20at%20Real%20del%20Mar.%20Could%20you%20send%20me%20more%20information%3F'
-            : 'https://wa.me/526610000000?text=Hola%2C%20me%20interesa%20The%20Estates%20en%20Real%20del%20Mar%2C%20%C2%BFme%20pueden%20enviar%20informaci%C3%B3n%3F'"
-        href="https://wa.me/526610000000?text=Hola%2C%20me%20interesa%20The%20Estates%20en%20Real%20del%20Mar%2C%20%C2%BFme%20pueden%20enviar%20informaci%C3%B3n%3F"
+            ? 'https://wa.me/526641158106?text=Hi%2C%20I%27m%20interested%20in%20The%20Estates%20at%20Real%20del%20Mar.%20Could%20you%20send%20me%20more%20information%3F'
+            : 'https://wa.me/526641158106?text=Hola%2C%20me%20interesa%20The%20Estates%20en%20Real%20del%20Mar%2C%20%C2%BFme%20pueden%20enviar%20informaci%C3%B3n%3F'"
+        href="https://wa.me/526641158106?text=Hola%2C%20me%20interesa%20The%20Estates%20en%20Real%20del%20Mar%2C%20%C2%BFme%20pueden%20enviar%20informaci%C3%B3n%3F"
         target="_blank" rel="noopener"
         aria-label="WhatsApp"
         class="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg shadow-ink/20 transition-transform duration-300 hover:scale-110"
