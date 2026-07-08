@@ -37,7 +37,7 @@
     <meta property="og:site_name" content="The Estates · Real del Mar">
     <meta property="og:title" content="The Estates · Real del Mar — Villas mediterráneas frente al Pacífico">
     <meta property="og:description" content="Villas privadas de 2, 3 y 4 recámaras con vistas al mar dentro de Real del Mar, Tijuana. Arquitectura mediterránea, desde 1.16M USD.">
-    <meta property="og:image" content="{{ $siteUrl }}/images/og-estates.jpg">
+    <meta property="og:image" content="{{ $siteUrl }}/images/og-estates-hero.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/jpeg">
@@ -49,7 +49,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Estates · Real del Mar — Villas mediterráneas frente al Pacífico">
     <meta name="twitter:description" content="Villas privadas de 2, 3 y 4 recámaras con vistas al mar dentro de Real del Mar, Tijuana. Arquitectura mediterránea, desde 1.16M USD.">
-    <meta name="twitter:image" content="{{ $siteUrl }}/images/og-estates.jpg">
+    <meta name="twitter:image" content="{{ $siteUrl }}/images/og-estates-hero.jpg">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
