@@ -3,8 +3,8 @@
     {{-- Backdrop --}}
     <div class="absolute inset-0">
         <img
-            src="{{ asset('images/estates-vista-mar.jpg') }}"
-            alt="Villa de The Estates con vista al Pacífico al atardecer"
+            src="{{ asset('images/the-estates-hero.jpg') }}"
+            alt="Villa de The Estates con alberca y jardines al atardecer"
             class="kenburns h-full w-full object-cover object-center"
             fetchpriority="high"
         >
