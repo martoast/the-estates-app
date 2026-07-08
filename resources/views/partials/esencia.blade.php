@@ -23,6 +23,21 @@
                         <x-slot:en>Three prototypes of 2, 3 and 4 bedrooms on generous lots, designed for living or investing within an established community with a golf course, clubhouse, and security.</x-slot:en>
                     </x-t>
                 </p>
+
+                {{-- Key numbers (blueprint: proyecto stat row) --}}
+                <dl class="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
+                    @foreach ([
+                        ['n' => '~22', 'es' => 'Villas · Etapa 1', 'en' => 'Villas · Stage 1'],
+                        ['n' => '3', 'es' => 'Prototipos', 'en' => 'Prototypes'],
+                        ['n' => '2–4', 'es' => 'Recámaras', 'en' => 'Bedrooms'],
+                        ['n' => '250+', 'es' => 'm² totales', 'en' => 'Total m²'],
+                    ] as $stat)
+                        <div>
+                            <dt class="display text-4xl font-light text-ink">{{ $stat['n'] }}</dt>
+                            <dd class="eyebrow mt-1 text-[0.55rem] text-ink-soft"><span class="lang-es">{{ $stat['es'] }}</span><span class="lang-en">{{ $stat['en'] }}</span></dd>
+                        </div>
+                    @endforeach
+                </dl>
             </div>
 
             {{-- Villa render --}}

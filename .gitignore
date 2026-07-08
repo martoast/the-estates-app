@@ -26,3 +26,6 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 .gstack/
+
+# Local Netlify folder
+.netlify
