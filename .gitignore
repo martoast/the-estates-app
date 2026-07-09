@@ -29,3 +29,7 @@ Thumbs.db
 
 # Local Netlify folder
 .netlify
+
+# Laravel compiled views + build output (built in CI)
+/storage/framework/views/*.php
+/dist
