@@ -10,7 +10,7 @@ OUT="${OUT:-dist}"                       # in-repo, committed + published by Net
 PORT=8099
 # Public URL of the deployed site — used for canonical/og:url/og:image,
 # which social scrapers require to be absolute. Override: SITE_URL=... ./build-static.sh
-SITE_URL="${SITE_URL:-https://casas-the-estates.netlify.app}"
+SITE_URL="${SITE_URL:-https://the-estates-rdm.netlify.app}"
 
 echo "▸ Building front-end assets…"
 # Remove the Vite dev "hot" marker — if present, @vite() emits dev-server
