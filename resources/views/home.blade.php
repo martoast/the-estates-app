@@ -8,6 +8,7 @@
 @section('content')
     @include('partials.hero')
     @include('partials.esencia')
+    @include('partials.video')
     @include('partials.casa-club')
     @include('partials.residencias')
     @include('partials.aspiracional')
