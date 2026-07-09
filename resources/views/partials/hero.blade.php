@@ -26,16 +26,6 @@
                 <x-slot:en>A private collection of 2, 3 and 4-bedroom villas within Real del Mar — with gardens, pool, and open ocean views.</x-slot:en>
             </x-t>
         </p>
-        <div class="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href="#residencias"
-               class="eyebrow rounded-full bg-terra-500 px-7 py-3.5 text-[0.65rem] text-sand-50 transition-all duration-300 hover:bg-terra-600">
-                <x-t><x-slot:es>Ver residencias</x-slot:es><x-slot:en>Explore residences</x-slot:en></x-t>
-            </a>
-            <a href="#contacto"
-               class="eyebrow rounded-full border border-sand-50/30 px-7 py-3.5 text-[0.65rem] text-sand-50 backdrop-blur-sm transition-all duration-300 hover:border-sand-50/60 hover:bg-sand-50/5">
-                <x-t><x-slot:es>Agendar visita</x-slot:es><x-slot:en>Schedule a visit</x-slot:en></x-t>
-            </a>
-        </div>
     </div>
 
     {{-- Scroll cue --}}
