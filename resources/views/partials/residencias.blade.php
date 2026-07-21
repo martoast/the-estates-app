@@ -2,7 +2,7 @@
 @php
     // Shared cinematic showcase — the delivered renders (not prototype-specific).
     $showcase = [
-        ['img' => 'estates-vista-aerea.jpg',        'alt' => 'Vista aérea de las villas de The Estates con el Pacífico al fondo'],
+        ['img' => 'estates-vista-aerea-v4.jpg',     'alt' => 'Vista aérea de las villas de The Estates con el Pacífico al fondo'],
         ['img' => 'estates-fachada.jpg',           'alt' => 'Fachada de villa tipo al atardecer'],
         ['img' => 'estates-vista-mar.jpg',          'alt' => 'Jardín y alberca con vista al mar'],
         ['img' => 'estates-sala-cocina.jpg',        'alt' => 'Sala y comedor hacia la cocina'],
