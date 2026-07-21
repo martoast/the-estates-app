@@ -62,7 +62,14 @@
     {{-- ============================== PRELOADER ============================== --}}
     <div id="preloader" class="fixed inset-0 z-[100] flex items-center justify-center bg-ocean-950">
         <div class="preloader-mark flex flex-col items-center">
-            @include('partials.logo', ['variant' => 'white', 'class' => 'h-16 sm:h-20'])
+            {{-- City | divisor | The Estates --}}
+            <div class="flex items-center gap-4 sm:gap-5">
+                <img src="{{ asset('images/city-logo-blanco.png') }}" alt="City Inmobiliaria"
+                    class="h-10 w-auto object-contain sm:h-12">
+                <span class="h-9 w-px shrink-0 bg-white/40 sm:h-11" aria-hidden="true"></span>
+                <img src="{{ asset('images/the-estates-logo-white.png') }}" alt="The Estates"
+                    class="h-12 w-auto object-contain sm:h-16">
+            </div>
             <div class="mt-10 h-px w-44 overflow-hidden rounded-full bg-sand-50/15">
                 <div id="preloader-bar" class="h-full w-0 rounded-full bg-terra-400 transition-[width] duration-300 ease-out"></div>
             </div>
@@ -88,11 +95,18 @@
             {{-- Logo --}}
             <a
                 href="#"
-                class="group relative z-50 flex items-center gap-3 transition-colors duration-500"
-                :class="navSolid || navOpen ? 'text-ink' : 'text-sand-50'"
-                aria-label="The Estates — inicio"
+                class="group relative z-50 flex items-center"
+                aria-label="City Inmobiliaria — inicio"
             >
-                @include('partials.logo', ['variant' => 'auto', 'class' => 'h-11 lg:h-14'])
+                {{-- City logo — white on the transparent hero, navy when the bar turns solid --}}
+                <span class="relative block">
+                    <img src="{{ asset('images/city-logo-blanco.png') }}" alt="City Inmobiliaria"
+                        class="block h-9 w-auto shrink-0 object-contain transition-opacity duration-500 lg:h-11"
+                        :class="navSolid || navOpen ? 'opacity-0' : 'opacity-100'">
+                    <img src="{{ asset('images/city-logo-azul.png') }}" alt="City Inmobiliaria"
+                        class="absolute left-0 top-0 block h-9 w-auto shrink-0 object-contain transition-opacity duration-500 lg:h-11"
+                        :class="navSolid || navOpen ? 'opacity-100' : 'opacity-0'">
+                </span>
             </a>
 
             {{-- Desktop links --}}
@@ -217,18 +231,32 @@
         </div>
     </footer>
 
-    {{-- Floating WhatsApp (message switches with language) --}}
-    <a
-        :href="$store.lang.current === 'en'
-            ? 'https://wa.me/526641158106?text=Hi%2C%20I%27m%20interested%20in%20The%20Estates%20at%20Real%20del%20Mar.%20Could%20you%20send%20me%20more%20information%3F'
-            : 'https://wa.me/526641158106?text=Hola%2C%20me%20interesa%20The%20Estates%20en%20Real%20del%20Mar%2C%20%C2%BFme%20pueden%20enviar%20informaci%C3%B3n%3F'"
-        href="https://wa.me/526641158106?text=Hola%2C%20me%20interesa%20The%20Estates%20en%20Real%20del%20Mar%2C%20%C2%BFme%20pueden%20enviar%20informaci%C3%B3n%3F"
-        target="_blank" rel="noopener"
-        aria-label="WhatsApp"
-        class="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg shadow-ink/20 transition-transform duration-300 hover:scale-110"
-    >
-        <svg viewBox="0 0 24 24" class="h-7 w-7 fill-white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.668-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    </a>
+    {{-- Botones flotantes (costado derecho, centrados vertical): Ubicación · Teléfono · WhatsApp --}}
+    <div class="fixed bottom-6 right-4 z-40 flex flex-col items-center gap-3 sm:bottom-auto sm:right-6 sm:top-1/2 sm:-translate-y-1/2">
+        {{-- Ubicación · Real del Mar --}}
+        <a href="https://maps.app.goo.gl/VXKG3A8x1Q2A7C827" target="_blank" rel="noopener"
+            aria-label="Ubicación de Real del Mar" title="Ubicación"
+            class="flex h-11 w-11 items-center justify-center rounded-full bg-[#021637] shadow-lg shadow-ink/20 transition-transform duration-300 hover:scale-110 sm:h-14 sm:w-14">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" class="h-5 w-5 sm:h-7 sm:w-7"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+        </a>
+        {{-- Teléfono · City Inmobiliaria --}}
+        <a href="tel:+526641158106" onclick="if(window.fbq)fbq('track','Contact',{method:'call'})"
+            aria-label="Llamar a City Inmobiliaria" title="Teléfono"
+            class="flex h-11 w-11 items-center justify-center rounded-full bg-[#021637] shadow-lg shadow-ink/20 transition-transform duration-300 hover:scale-110 sm:h-14 sm:w-14">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" class="h-5 w-5 sm:h-7 sm:w-7"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+        </a>
+        {{-- WhatsApp · City Inmobiliaria (mensaje cambia con el idioma) --}}
+        <a
+            :href="$store.lang.current === 'en'
+                ? 'https://wa.me/526641158106?text=Hi%2C%20I%27m%20interested%20in%20The%20Estates%20at%20Real%20del%20Mar.%20Could%20you%20send%20me%20more%20information%3F'
+                : 'https://wa.me/526641158106?text=Hola%2C%20me%20interesa%20The%20Estates%20en%20Real%20del%20Mar%2C%20%C2%BFme%20pueden%20enviar%20informaci%C3%B3n%3F'"
+            href="https://wa.me/526641158106?text=Hola%2C%20me%20interesa%20The%20Estates%20en%20Real%20del%20Mar%2C%20%C2%BFme%20pueden%20enviar%20informaci%C3%B3n%3F"
+            target="_blank" rel="noopener"
+            aria-label="WhatsApp"
+            class="flex h-11 w-11 items-center justify-center rounded-full bg-[#25D366] shadow-lg shadow-ink/20 transition-transform duration-300 hover:scale-110 sm:h-14 sm:w-14">
+            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-white sm:h-7 sm:w-7"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.668-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+    </div>
 
 </body>
 </html>

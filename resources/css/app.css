@@ -82,26 +82,28 @@
     --font-sans: 'Titling Gothic Normal', ui-sans-serif, system-ui, sans-serif;
     --font-delight: 'Cormorant Garamond', ui-serif, Georgia, serif;
 
-    /* Sand / travertine — page backgrounds */
-    --color-sand-50: #faf7f1;
-    --color-sand-100: #f3ede2;
-    --color-sand-200: #e8ddcb;
+    /* Sand / travertine — page backgrounds (City: white + soft neutrals) */
+    --color-sand-50: #ffffff;
+    --color-sand-100: #f4f4f3;
+    --color-sand-200: #e6e6e4;
     --color-sand-300: #d7c6a9;
     --color-sand-400: #c2a87f;
 
     /* Deep navy — brand bands, footer, hero overlay, Pacific at dusk */
-    --color-ocean-300: #9bb4cc;
+    --color-ocean-300: #c8ccd2;
     --color-ocean-400: #5f82a6;
     --color-ocean-600: #305175;
     --color-ocean-800: #1a3050;
     --color-ocean-900: #11203a;
     --color-ocean-950: #0a1626;
 
-    /* Teja / terracotta — the warm accent (CTAs, key highlights) */
-    --color-terra-300: #e2b491;
-    --color-terra-400: #d18a5b;
-    --color-terra-500: #bd6739;
-    --color-terra-600: #9e5430;
+    /* City Inmobiliaria — navy accent (CTAs, eyebrows, key highlights).
+       -500 = official City navy #021637; -400 = mid blue for interactive
+       states & the availability plan; -300 = white, for accents on dark. */
+    --color-terra-300: #ffffff;
+    --color-terra-400: #1f4c8c;
+    --color-terra-500: #021637;
+    --color-terra-600: #0a2547;
 
     /* Olive / cypress — Mediterranean foliage, the secondary accent */
     --color-olive-300: #b6bd9c;

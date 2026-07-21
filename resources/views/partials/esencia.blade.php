@@ -19,15 +19,15 @@
                 </p>
                 <p class="mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
                     <x-t>
-                        <x-slot:es>Tres prototipos de 2, 3 y 4 recámaras sobre amplios lotes, diseñados para vivir o invertir dentro de una comunidad establecida con campo de golf, casa club y seguridad.</x-slot:es>
-                        <x-slot:en>Three prototypes of 2, 3 and 4 bedrooms on generous lots, designed for living or investing within an established community with a golf course, clubhouse, and security.</x-slot:en>
+                        <x-slot:es>Tres prototipos de 2, 3 y 4 recámaras sobre lotes de 2,000 metros cuadrados, diseñados para vivir o invertir dentro de una comunidad establecida con campo de golf, casa club y seguridad.</x-slot:es>
+                        <x-slot:en>Three prototypes of 2, 3 and 4 bedrooms on 2,000-square-meter lots, designed for living or investing within an established community with a golf course, clubhouse, and security.</x-slot:en>
                     </x-t>
                 </p>
 
                 {{-- Key numbers (blueprint: proyecto stat row) --}}
                 <dl class="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
                     @foreach ([
-                        ['n' => '~22', 'es' => 'Villas · Etapa 1', 'en' => 'Villas · Stage 1'],
+                        ['n' => '22', 'es' => 'Villas · Etapa 1', 'en' => 'Villas · Stage 1'],
                         ['n' => '3', 'es' => 'Prototipos', 'en' => 'Prototypes'],
                         ['n' => '2–4', 'es' => 'Recámaras', 'en' => 'Bedrooms'],
                         ['n' => '250+', 'es' => 'm² totales', 'en' => 'Total m²'],
@@ -50,9 +50,6 @@
                         class="aspect-[4/5] w-full object-cover"
                     >
                 </div>
-                <p class="eyebrow mt-4 text-center text-[0.55rem] text-ink-soft/70">
-                    <x-t><x-slot:es>Villa tipo · The Estates</x-slot:es><x-slot:en>Type villa · The Estates</x-slot:en></x-t>
-                </p>
             </div>
         </div>
     </div>

@@ -14,6 +14,8 @@
 
     {{-- Copy — bottom-centered, like the Riviera hero --}}
     <div class="reveal-group is-revealed relative z-10 mx-auto w-full max-w-5xl px-6 pb-32 text-center sm:pb-20">
+        <img src="{{ asset('images/the-estates-logo-white.png') }}" alt="The Estates at Real del Mar"
+            class="mx-auto mb-8 h-16 w-auto object-contain drop-shadow-[0_2px_24px_rgba(10,22,38,0.6)] sm:mb-10 sm:h-20 lg:h-24">
         <h1 class="display text-5xl font-light text-sand-50 drop-shadow-[0_2px_24px_rgba(10,22,38,0.6)] sm:text-6xl lg:text-7xl">
             <x-t>
                 <x-slot:es>Una villa <em>mediterránea</em><br>sobre el Pacífico</x-slot:es>

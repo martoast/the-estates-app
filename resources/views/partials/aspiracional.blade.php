@@ -19,7 +19,7 @@
                     <x-slot:en>Living at The Estates means waking among gardens and Mediterranean architecture, with the Pacific on the horizon — privacy, space, and a real connection to the Real del Mar way of life.</x-slot:en>
                 </x-t>
             </p>
-            <a href="#contacto" class="eyebrow mt-9 inline-flex items-center justify-center rounded-full bg-terra-500 px-8 py-4 text-[0.7rem] text-sand-50 transition-colors hover:bg-terra-600">
+            <a href="#contacto" class="eyebrow mt-9 inline-flex items-center justify-center rounded-full bg-sand-50 px-8 py-4 text-[0.7rem] text-ink transition-colors hover:bg-sand-200">
                 <x-t><x-slot:es>Agendar visita</x-slot:es><x-slot:en>Schedule a visit</x-slot:en></x-t>
             </a>
         </div>

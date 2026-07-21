@@ -45,7 +45,7 @@
             @foreach ($chips as $chip)
                 <button @click="filter = '{{ $chip['k'] }}'"
                     class="eyebrow flex items-center gap-2 rounded-full border px-5 py-2.5 text-[0.6rem] transition-colors duration-300"
-                    :class="filter === '{{ $chip['k'] }}' ? 'border-terra-400 bg-terra-400/15 text-sand-50' : 'border-sand-50/15 text-sand-200/70 hover:border-sand-50/40'">
+                    :class="filter === '{{ $chip['k'] }}' ? 'border-sand-50 bg-sand-50/15 text-sand-50' : 'border-sand-50/15 text-sand-200/70 hover:border-sand-50/40'">
                     <span class="lang-es">{{ $chip['es'] }}</span><span class="lang-en">{{ $chip['en'] }}</span>
                     <span class="text-sand-200/50">{{ $chip['n'] }}</span>
                 </button>
@@ -117,7 +117,7 @@
                             </div>
                             <a href="#contacto"
                                 class="eyebrow mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-4 text-[0.65rem] transition-all duration-300"
-                                :class="active && active.status === 'available' ? 'bg-terra-500 text-sand-50 hover:bg-terra-600' : 'border border-sand-50/20 text-sand-200/70 hover:border-sand-50/40'">
+                                :class="active && active.status === 'available' ? 'bg-sand-50 text-ink hover:bg-sand-200' : 'border border-sand-50/20 text-sand-200/70 hover:border-sand-50/40'">
                                 <span x-show="active && active.status === 'available'"><span class="lang-es">Solicitar información</span><span class="lang-en">Request information</span></span>
                                 <span x-show="active && active.status !== 'available'"><span class="lang-es">Ver otras opciones</span><span class="lang-en">See other options</span></span>
                             </a>

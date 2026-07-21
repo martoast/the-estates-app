@@ -1,5 +1,9 @@
 {{-- ============================== CONTACTO (blueprint: narrow conversion form, Bolt CRM webhook) ============================== --}}
-<section id="contacto" class="bg-sand-100 py-24 lg:py-32"
+{{-- $variant makes the section id and form name unique so this partial can be
+     included more than once on the page without clashing IDs. Each instance has
+     its own Alpine scope, so the two forms submit and validate independently. --}}
+@php $formId = ($variant ?? null) ? 'contacto-' . $variant : 'contacto'; @endphp
+<section id="{{ $formId }}" class="bg-sand-100 py-24 lg:py-32"
     x-data="{
         sending: false,
         sent: false,
@@ -10,7 +14,7 @@
             if (data['bot-field']) { this.sent = true; return; } // honeypot: silently 'succeed'
             delete data['bot-field'];
             delete data['form-name'];
-            data.form = 'contacto';
+            data.form = '{{ $formId }}';
             data.sitio = location.host;
             data.pagina = location.href;
             data.idioma = $store.lang.current;
@@ -50,7 +54,7 @@
             </p>
         </div>
 
-        <form name="contacto" @submit.prevent="submitForm"
+        <form name="{{ $formId }}" @submit.prevent="submitForm"
             class="reveal mt-12 space-y-4 rounded-3xl bg-white p-8 shadow-xl shadow-ink/10 ring-1 ring-ink/5 lg:p-10">
             <p class="hidden" aria-hidden="true"><label>No llenar: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 
@@ -70,16 +74,16 @@
                     <span x-show="!sending"><x-t><x-slot:es>Enviar</x-slot:es><x-slot:en>Send</x-slot:en></x-t></span>
                     <span x-show="sending" x-cloak><x-t><x-slot:es>Enviando…</x-slot:es><x-slot:en>Sending…</x-slot:en></x-t></span>
                 </button>
-                <a href="https://wa.me/526641158106" target="_blank" rel="noopener" onclick="if(window.fbq)fbq('track','Contact',{method:'whatsapp'})"
+                <a href="tel:+526641158106" onclick="if(window.fbq)fbq('track','Contact',{method:'call'})"
                     class="eyebrow flex flex-1 items-center justify-center gap-2 rounded-full border border-ink/20 px-8 py-4 text-[0.7rem] text-ink transition-colors hover:border-ink hover:bg-ink hover:text-sand-50">
-                    <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.9-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.1.2-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.4 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .8-.2 1.4z"/></svg>
-                    WhatsApp
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+                    <x-t><x-slot:es>Llamar ahora</x-slot:es><x-slot:en>Call now</x-slot:en></x-t>
                 </a>
             </div>
             <p x-show="error" x-cloak class="pt-1 text-center text-xs text-red-600">
                 <x-t>
-                    <x-slot:es>No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos por WhatsApp.</x-slot:es>
-                    <x-slot:en>We couldn't send your request. Please try again or message us on WhatsApp.</x-slot:en>
+                    <x-slot:es>No pudimos enviar tu solicitud. Intenta de nuevo o llámanos.</x-slot:es>
+                    <x-slot:en>We couldn't send your request. Please try again or call us.</x-slot:en>
                 </x-t>
             </p>
         </form>
@@ -87,7 +91,7 @@
         <p class="reveal mt-6 text-center text-sm text-ink-soft">
             <a href="mailto:ventas@cityinmobiliaria.mx" class="transition-colors hover:text-terra-500">ventas@cityinmobiliaria.mx</a>
             <span class="mx-2 text-ink-soft/40">·</span>
-            <a href="https://wa.me/526641158106" target="_blank" rel="noopener" class="transition-colors hover:text-terra-500">+52 664 115 8106</a>
+            <a href="tel:+526641158106" class="transition-colors hover:text-terra-500">+52 664 115 8106</a>
         </p>
     </div>
 

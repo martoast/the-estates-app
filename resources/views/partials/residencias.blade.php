@@ -2,6 +2,7 @@
 @php
     // Shared cinematic showcase — the delivered renders (not prototype-specific).
     $showcase = [
+        ['img' => 'estates-vista-aerea.jpg',        'alt' => 'Vista aérea de las villas de The Estates con el Pacífico al fondo'],
         ['img' => 'estates-fachada.jpg',           'alt' => 'Fachada de villa tipo al atardecer'],
         ['img' => 'estates-vista-mar.jpg',          'alt' => 'Jardín y alberca con vista al mar'],
         ['img' => 'estates-sala-cocina.jpg',        'alt' => 'Sala y comedor hacia la cocina'],
@@ -26,8 +27,8 @@
             'rec_es' => '3 recámaras', 'rec_en' => '3 bedrooms',
             'total' => '270.82', 'sotano' => '64.65', 'ft2' => '2,916',
             'desde' => '1,200,180',
-            'sotano_es' => 'Studio / TV · recámara 3 con baño y walk-in',
-            'sotano_en' => 'Studio / TV · bedroom 3 with bath & walk-in',
+            'sotano_es' => 'Studio / TV · recámara 3 con baño y walk-in closet',
+            'sotano_en' => 'Studio / TV · Bedroom 3 with bathroom and walk-in closet',
         ],
         [
             'letra' => 'C',
@@ -71,7 +72,8 @@
                 {{-- Glass info panel --}}
                 <div class="relative z-10 -mt-16 p-4 sm:absolute sm:inset-x-0 sm:bottom-0 sm:z-auto sm:mt-0 sm:max-w-lg sm:p-6 lg:p-10">
                     <div class="rounded-2xl border border-sand-50/15 bg-ocean-950/40 p-5 backdrop-blur-md sm:p-6 lg:p-8">
-                        <p class="eyebrow text-[0.6rem] text-terra-300"><x-t><x-slot:es>Etapa 1 · ~22 villas</x-slot:es><x-slot:en>Stage 1 · ~22 villas</x-slot:en></x-t></p>
+                        <p class="eyebrow text-[0.6rem] text-terra-300"><x-t><x-slot:es>22 villas · Etapa 1</x-slot:es><x-slot:en>22 villas · Phase 1</x-slot:en></x-t></p>
+                        <p class="eyebrow mt-1 text-[0.55rem] text-sand-100/60"><x-t><x-slot:es>123 villas en total</x-slot:es><x-slot:en>123 villas in total</x-slot:en></x-t></p>
                         <h3 class="display mt-3 text-4xl font-light text-sand-50 sm:text-5xl">Villas <em>The Estates</em></h3>
                         <p class="mt-4 text-sm leading-relaxed text-sand-100/85">
                             <x-t>
